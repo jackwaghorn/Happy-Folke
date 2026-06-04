@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+#__nuxt, html, body {
+  font-family: 'Spectral', serif;
+  width:100%;
+  height:100%;
+    font-family: "Averia Serif Libre", serif;
+}
