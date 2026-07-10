@@ -1,0 +1,129 @@
+import { defineQuery } from "groq";
+
+export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0] {
+  title,
+  description,
+  favIcon { asset-> { url } },
+  ogImage { asset-> { url } }
+}`);
+
+export const homepageQuery = `*[_type == "homepage"][0]{
+  subtitle,
+  bioIntro,
+    bioLeftImageOne{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  bioLeftImageTwo{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  paraLeft,
+  paraRight,
+  bioRightImageOne{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  bioRightImageTwo{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  seedPackets[]{
+    title,
+    image{
+      ...,
+      asset->{
+        _id,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    }
+  },
+  seedText,
+  gardenerTitle,
+  gardenerSubtitle,
+  gardenerText,
+  gardenerImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  testTitle,
+  testText,
+  testimonials[]{
+    test,
+    testName
+  }
+}`
+
+
+export const aboutQuery = `*[_type == "about"][0]{
+title,
+biographyText,
+    bioImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+}`
+
+export const servicesQuery = `*[_type == "services"][0]{
+  title,
+  servicesText,
+  services[]{
+    title,
+    description,
+    image{
+      ...,
+      asset->{
+        _id,
+        _type,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    }
+  }
+}`
+
+export const galleryQuery = `*[_type == "gallery"][0]{
+  images[]{
+    image{
+      ...,
+      asset->{
+        _id,
+        _type,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    },
+    title,
+    caption
+  }
+}`
+
+export const contactQuery = `*[_type == "contact"][0]{
+title,
+contactText,
+}`

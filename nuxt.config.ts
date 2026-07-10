@@ -13,7 +13,17 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/fonts', '@nuxt/image'],
+  modules: ['@nuxt/fonts', '@nuxt/image', '@vueuse/nuxt', 'motion-v/nuxt', '@nuxtjs/sanity'],
+  sanity: {
+    projectId: 'pw4670k6',
+    useCdn: false,
+  },
+  image: {
+    sanity: {
+      projectId: 'pw4670k6',
+      dataset: 'production',
+    }
+  },
   css: ['./app/assets/css/main.css'],
   vite: {
     plugins: [

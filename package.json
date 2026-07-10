@@ -12,8 +12,15 @@
   "dependencies": {
     "@nuxt/fonts": "0.14.0",
     "@nuxt/image": "2.0.0",
+    "@nuxtjs/sanity": "2.3.0",
+    "@rive-app/canvas": "^2.38.4",
+    "@sanity/image-url": "^2.1.1",
     "@tailwindcss/vite": "^4.3.0",
+    "@vueuse/nuxt": "14.3.0",
+    "gsap": "^3.15.0",
+    "motion-v": "^2.3.0",
     "nuxt": "^4.4.6",
+    "swiper": "^14.0.1",
     "tailwindcss": "^4.3.0",
     "vue": "^3.5.34",
     "vue-router": "^5.0.7"
