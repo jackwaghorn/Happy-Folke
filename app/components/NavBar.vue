@@ -9,7 +9,7 @@ const isAtTop = computed(() => {
 }); // small threshold avoids flicker
 </script>
 <template>
-  <nav class="fixed top-0 left-0 w-full z-10 p-1 md:p-3">
+  <nav class="fixed top-0 left-0 w-full z-10 ps-1 md:p-3">
     <div
       :class="isAtTop ? 'bg-transparent text-white' : 'md:bg-[#f0efd600] text-brown '"
       class="px-4 md:px-12 transition grid grid-cols-2 md:grid-cols-3 rounded-lg"

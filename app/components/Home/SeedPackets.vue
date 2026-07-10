@@ -15,7 +15,7 @@ const seeds = computed(() =>
 </script>
 
 <template>
-  <section class="flex flex-col pb-40 bg-white">
+  <section class="flex flex-col pb-20 md:pb-40 bg-white">
     <!-- Title -->
     <h2 class="text-brown text-center text-large-2 font-bold py-20">
       Expert garden <br />
@@ -29,7 +29,7 @@ const seeds = computed(() =>
       <div
         v-for="(packet, index) in seeds"
         :key="index"
-        class="packet w-10/12 md:w-1/4 -mb-60 md:mb-0 group cursor-pointer"
+        class="packet w-8/12 md:w-1/4 even:ms-10  odd:-ms-10 md:even:ms-0 md:odd:ms-0 -mb-40 md:mb-0 group cursor-pointer"
       >
         <motion.div
           :while-hover="{ y: -36, zIndex: 10 }"
@@ -42,10 +42,10 @@ const seeds = computed(() =>
           ></div>
 
           <div
-            class="mt-12 left-0 w-full md:w-[calc(100%-2rem)] bg-off-white md:rounded-e-2xl z-1 relative text-center py-4 md:py-6"
+            class="mt-12 left-0 w-full md:w-[calc(100%-2rem)] bg-brown md:bg-off-white md:rounded-e-2xl z-1 relative text-center py-4 md:py-6"
           >
             <div
-              class="md:ms-8 flex items-center justify-center font-bold text-yellow text-large leading-8 tracking-tight"
+              class="md:ms-8 flex items-center justify-center font-bold text-off-white md:text-yellow text-large leading-8 tracking-tight"
             >
               {{ packet.title }}
             </div>
@@ -66,7 +66,7 @@ const seeds = computed(() =>
       </div>
     </div>
 
-    <div class="mt-80 md:mt-30 flex flex-col items-center gap-4">
+    <div class="mt-60 md:mt-30 flex flex-col items-center gap-4">
       <div class="w-full md:w-4/12 mx-auto text-center text-brown">
         <SanityContent :value="text" />
       </div>
