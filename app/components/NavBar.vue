@@ -5,7 +5,7 @@ const { y } = useWindowScroll();
 const { height } = useWindowSize();
 const isAtTop = computed(() => {
   if (route.name !== "index") return false;
-  return y.value < height.value;
+  return y.value < height.value + 280;
 }); // small threshold avoids flicker
 </script>
 <template>
@@ -26,7 +26,7 @@ const isAtTop = computed(() => {
       <!-- Logo -->
       <NuxtLink to="/" class="hidden md:flex items-center justify-center py-1">
         <svg
-          :class="isAtTop ? 'opacity-0' : 'opacity-100'"
+          :class="isAtTop ? 'opacity-0 -translate-y-full' : 'opacity-100 translate-y-0'"
           class="w-50 transition"
           viewBox="0 0 160 52"
           fill="none"
@@ -130,7 +130,7 @@ const isAtTop = computed(() => {
             >
               <path
                 d="M6.6229e-08 6.75758L0 5.24242H9.09091L4.92424 1.07576L6 0L12 6L6 12L4.92424 10.9242L9.09091 6.75758H6.6229e-08Z"
-                fill="#6D3409"
+                fill="currentColor"
               />
             </svg>
           </motion.div>
