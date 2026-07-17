@@ -2,7 +2,7 @@
 import { motion } from "motion-v";
 
 const props = defineProps<{
-  packets?: Array<{ title: string; image: any }>;
+  packets?: Array<{ title: string; image: any; caption:string }>;
   text?: any;
 }>();
 
@@ -10,18 +10,52 @@ const seeds = computed(() =>
   (props.packets ?? []).slice(0, 4).map((packet) => ({
     title: packet.title,
     image: packet.image,
+    caption: packet.caption
   }))
 );
+
+const activeIndex = ref<number | null>(null);
+const xOffsets = reactive<Record<number, number>>({});
+const nudgeTimeouts: Record<number, ReturnType<typeof setTimeout>> = {};
+
+const NUDGE_RETURN_DELAY = 200; // how long the neighbor stays poked out before springing back
+
+function nudgeRight(index: number) {
+  clearTimeout(nudgeTimeouts[index]);
+  xOffsets[index] = 20;
+  nudgeTimeouts[index] = setTimeout(() => {
+    xOffsets[index] = 0;
+  }, NUDGE_RETURN_DELAY);
+}
+
+function onEnter(index: number) {
+  activeIndex.value = index;
+  nudgeRight(index + 1);
+}
+function onLeave(index: number) {
+  activeIndex.value = null;
+  nudgeRight(index + 1); // same nudge plays again on the way out
+}
+
+function zIndexFor(index: number) {
+  return activeIndex.value === index ? 10 : 0;
+}
+function yFor(index: number) {
+  return activeIndex.value === index ? -60 : 0;
+}
 </script>
 
 <template>
-  <section class="flex flex-col pb-20 md:pb-40 bg-white">
+  <section class="flex flex-col pb-20 md:pb-40 bg-off-white relative">
+    <!-- Line top -->
+    <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">
+      <RoughLine color="#F0EFD6" :flipped="false" />
+    </div>
     <!-- Title -->
-    <h2 class="text-brown text-center text-large-2 font-bold py-20">
-      Expert garden <br />
-      maintenance <br />
-      services
-    </h2>
+    <h2 class="text-brown text-center text-large-2 pt-20">Gardening services</h2>
+    <div class="w-full md:w-7/12 mx-auto text-center text-brown text-mid mt-12 mb-18">
+      <SanityContent :value="text" />
+    </div>
     <!-- Packet container -->
     <div
       class="relative flex flex-col md:flex-row items-center justify-center px-10 md:px-60"
@@ -29,50 +63,50 @@ const seeds = computed(() =>
       <div
         v-for="(packet, index) in seeds"
         :key="index"
-        class="packet w-8/12 md:w-1/4 even:ms-10  odd:-ms-10 md:even:ms-0 md:odd:ms-0 -mb-40 md:mb-0 group cursor-pointer"
+        :style="{ zIndex: zIndexFor(index) }"
+        @mouseenter="onEnter(index)"
+        @mouseleave="onLeave(index)"
+        class="packet relative w-8/12 md:w-1/4 even:ms-10 odd:-ms-10 md:even:ms-0 md:odd:ms-0 -mb-40 md:mb-0 group cursor-pointer"
       >
         <motion.div
-          :while-hover="{ y: -36, zIndex: 10 }"
+          :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
           :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
-          class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl bg-white overflow-hidden relative"
+          class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl bg-[#D1D1AF] overflow-hidden relative flex flex-col items-between justify-between"
         >
           <!-- hole -->
           <div
-            class="top-6 w-[40%] bg-white h-6 rounded-full border border-brown z-1 relative mx-auto"
+            class="absolute top-6 w-[40%] bg-off-white h-6 left-0 right-0 rounded-full border border-brown z-1 mx-auto"
           ></div>
 
-          <div
-            class="mt-12 left-0 w-full md:w-[calc(100%-2rem)] bg-brown md:bg-off-white md:rounded-e-2xl z-1 relative text-center py-4 md:py-6"
-          >
-            <div
-              class="md:ms-8 flex items-center justify-center font-bold text-off-white md:text-yellow text-large leading-8 tracking-tight"
-            >
-              {{ packet.title }}
-            </div>
-          </div>
+        
 
-          <div
-            class="absolute bottom-4 left-0 z-1 mt-30 bg-brown pe-4 p-2 text-off-white rounded-e-2xl -translate-x-full group-hover:translate-0 transition"
-          >
-            We've got you covered!
-          </div>
           <SanityImage
             v-if="packet.image"
             :image="packet.image"
             :alt="packet.title"
-            class="w-full h-full object-cover absolute top-0 left-0 brightness-80 md:brightness-60 md:group-hover:brightness-80 duration-300 transition"
+            class="w-full absolute top-0 bottom-0 m-auto left-0 pb-5"
           />
+          <div class="w-full p-4 mt-auto">
+        
+            <div
+              class="flex items-center justify-start font-bold text-brown text-large leading-8 mb-3 tracking-tight"
+            >
+              {{ packet.title }}
+
+          </div>
+          
+            <div class="w-full pt-2 border-t border-brown text-brown text-small">
+              {{ packet.caption }}
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>
 
     <div class="mt-60 md:mt-30 flex flex-col items-center gap-4">
-      <div class="w-full md:w-4/12 mx-auto text-center text-brown">
-        <SanityContent :value="text" />
-      </div>
       <NuxtLink to="/services">
         <motion.div
-          class="text-brown outline outline-[#6d340967] hover:outline-0 hover:text-off-white hover:bg-brown group h-9 flex items-center justify-center cursor-pointer relative mt-3 px-4"
+          class="text-brown outline outline-[#6d340937] hover:outline-0 bg-white hover:text-off-white hover:bg-brown group h-10 flex items-center justify-center cursor-pointer relative mt-3 px-4"
           :while-hover="{
             scale: 1.02,
           }"
@@ -83,7 +117,7 @@ const seeds = computed(() =>
             damping: 24,
           }"
         >
-          Services
+          Explore all services
         </motion.div>
       </NuxtLink>
     </div>

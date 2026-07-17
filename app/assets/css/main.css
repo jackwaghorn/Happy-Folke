@@ -15,6 +15,7 @@
   --color-off-white: #F0EFD6;
   --color-brown: #6D3409;
   --color-yellow: #FDCA40;
+  --color-green: #D1D1AF;
 
 }
 
@@ -34,7 +35,7 @@ body {
 
 @layer base {
   .text-large-2 {
-    @apply text-[3rem] leading-[3rem] md:text-[5rem] md:leading-[4.4rem];
+    @apply text-[3rem] leading-[3rem] md:text-[3.4rem] md:leading-[3.9rem];
   }
 
   .text-large {
@@ -42,8 +43,14 @@ body {
   }
 
   .text-mid {
-    @apply text-[1.2rem] leading-[1.6rem] md:text-[1.3rem] md:leading-[1.8rem];
+    @apply text-[1.2rem] leading-[1.6rem] md:text-[1.5rem] md:leading-[2rem];
   }
+  .text-base {
+    @apply text-[1rem] leading-[1.3rem];
+  }
+     .text-small {
+       @apply text-[0.8rem] leading-[1rem];
+     }
 }
 
 .router-link-active {

@@ -8,7 +8,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <section class="bg-off-white w-full py-4 relative">
+  <section class="bg-off-white w-full py-30 relative">
     <!-- Line top -->
     <div class="top-0 -mt-1 md:-mt-3 w-full absolute">
       <RoughLine color="#F0EFD6" :flipped="false" />
@@ -18,7 +18,7 @@ const props = defineProps<{
       <RoughLine color="#F0EFD6" :flipped="true" />
     </div>
 
-    <div class="md:mx-50 md:bg-white p-4 md:rounded-3xl grid md:grid-cols-2 gap-12">
+    <div class="md:mx-50 md:bg-green p-4 md:rounded-3xl grid md:grid-cols-2 gap-12">
       <div class="order-2 md:order-1">
         <SanityImage
           v-if="image"

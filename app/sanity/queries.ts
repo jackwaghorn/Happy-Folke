@@ -10,7 +10,23 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0] {
 export const homepageQuery = `*[_type == "homepage"][0]{
   subtitle,
   bioIntro,
-    bioLeftImageOne{
+  bioLeftImageOne{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+    bioLeftIllustration{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+      bioRightIllustration{
     ...,
     asset->{
       _id,
@@ -27,23 +43,6 @@ export const homepageQuery = `*[_type == "homepage"][0]{
     }
   },
   paraLeft,
-  paraRight,
-  bioRightImageOne{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-  bioRightImageTwo{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
   seedPackets[]{
     title,
     image{
@@ -53,7 +52,8 @@ export const homepageQuery = `*[_type == "homepage"][0]{
         url,
         metadata{ dimensions, lqip }
       }
-    }
+    },
+    caption
   },
   seedText,
   gardenerTitle,
@@ -72,6 +72,21 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   testimonials[]{
     test,
     testName
+  },
+  "gallery": *[_type == "gallery"][0]{
+    images[]{
+      image{
+        ...,
+        asset->{
+          _id,
+          _type,
+          url,
+          metadata{ dimensions, lqip }
+        }
+      },
+      title,
+      caption
+    }
   }
 }`
 

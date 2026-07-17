@@ -12,12 +12,12 @@ const props = defineProps<{
 const modules = [Autoplay];
 </script>
 <template>
-  <section class="py-20 md:py-40 bg-white">
-    <h2 class="text-large text-center font-bold relative z-1 text-brown">
+  <section class="pt-20 md:pt-40 pb-6 bg-off-white">
+    <h2 class="text-large-2 text-center relative z-1 mb-8 text-brown">
       {{ title }}
     </h2>
 
-    <div class="w-full flex items-center justify-center">
+    <div class="w-full flex items-center justify-center pb-12">
       <div class="px-2 w-full md:w-4/12 text-center text-brown mt-6">
         <SanityContent :value="text" />
       </div>
@@ -28,18 +28,19 @@ const modules = [Autoplay];
         :modules="modules"
         :slides-per-view="'auto'"
         :centered-slides="true"
-        :space-between="40"
+        :space-between="120"
         :loop="true"
+        :speed="1000"
         :autoplay="{ delay: 5000, disableOnInteraction: true }"
-        class="my-20 h-full"
+        class="my-6 h-full"
       >
         <SwiperSlide
-          class="border bg-[#f0efd64b] border-off-white md:bg-off-white pt-12 md:pt-20 p-8 md:p-20 rounded-lg h-full relative flex! flex-col w-[60%]"
+          class="border bg-[#f0efd64b] border-green md:bg-white pt-12 md:pt-20 p-8 md:p-8 rounded-3xl h-full relative flex! flex-col w-[60%]"
           v-for="(test, i) in testimonials"
           :key="i"
         >
           <svg
-            class="absolute top-0 left-0 w-12 ps-4 pt-4 text-yellow"
+            class="absolute top-0 left-0 w-22 ps-8 pt-8 text-yellow"
             viewBox="0 0 46 34"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -57,47 +58,20 @@ const modules = [Autoplay];
               fill="currentColor"
             />
           </svg>
-          <svg
-            class="absolute bottom-0 right-0 w-12 pe-4 pb-4 text-yellow"
-            viewBox="0 0 38 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M26.7996 22.65L27.7996 23.02L28.1796 23.74L28.3896 23.61L27.8396 23L27.6796 22C28.026 21.3886 28.4312 20.8126 28.8896 20.28C29.443 19.8438 30.0394 19.4652 30.6696 19.15L31.1296 17.51L32.7196 16.85C32.4782 16.6233 32.2573 16.3757 32.0596 16.11C31.9449 15.8498 31.8577 15.5783 31.7996 15.3C30.6096 15.48 29.3896 15.3 28.3396 16.14L27.6996 15.65C26.4726 15.7823 25.2363 15.5048 24.1835 14.8608C23.1308 14.2169 22.3207 13.2426 21.8796 12.09C21.6796 11.42 21.2896 10.8 21.1196 10.09C20.9814 9.43074 20.8911 8.76232 20.8496 8.09L22.1296 6.39L21.2496 4.66C21.3797 4.30087 21.6177 3.9908 21.9311 3.77236C22.2444 3.55392 22.6177 3.43782 22.9996 3.44C24.3096 3.44 24.9996 2.25 26.1996 2C26.2996 0.55 27.7696 0.69 28.5296 0H29.5296C30.4596 0.38 31.4096 0.72 32.3196 1.14C33.2892 1.52524 34.2173 2.0077 35.0896 2.58C35.7924 3.08595 36.3517 3.76575 36.7128 4.55282C37.074 5.3399 37.2245 6.20728 37.1496 7.07C37.1775 8.90383 36.7661 10.7177 35.9496 12.36C35.6939 12.7478 35.4133 13.1185 35.1096 13.47C35.1096 15.03 35.3096 16.63 34.1996 18.12L32.9796 18.39L33.1396 20.25L31.5796 21.37L30.2396 20.57C29.8596 21.32 30.6096 21.62 30.6496 22.19C29.9196 22.9 29.1596 23.68 28.3596 24.41C27.8096 24.91 27.4496 24.91 26.2496 24.64L25.8396 26.34L23.9996 25L26.3496 22.13L26.7796 22.63C26.7196 22.81 26.5696 23.01 26.5996 23.17C26.6715 23.3677 26.7839 23.5483 26.9296 23.7L27.1296 23.59L26.7996 22.65ZM27.7096 9L28.0696 9.16L28.2696 8.46L27.9996 8.39L27.7096 9Z"
-              fill="currentColor"
-            />
-            <path
-              d="M1.15 9.00062C1.34 8.36062 0.75 8.35062 0.35 8.07062L1.29 7.50063L0.45 7.10063L1.06 6.52063L0 5.33063L1.79 5.00063C1.64 4.52063 2.34 3.78062 1.27 3.57062L2.94 2.00063C3.62 1.92063 4.71 1.91062 5.14 0.750625C5.43964 0.688041 5.74408 0.65124 6.05 0.640625C8.05 0.760625 10.05 0.850625 12.1 1.05062C12.758 1.11973 13.3843 1.36885 13.91 1.77062C15.15 2.77062 16.45 3.77063 16.91 5.46063C17.0181 5.77239 17.1844 6.06081 17.4 6.31063C17.824 6.74731 18.0611 7.33199 18.0611 7.94063C18.0611 8.54926 17.824 9.13394 17.4 9.57062C17.1664 9.94054 16.956 10.3246 16.77 10.7206L17.39 12.3506C16.81 13.2706 15.27 13.5606 15.62 15.1006L14.22 15.5006L14.3 17.1106L13.22 18.4006L11.06 17.5106L12 19.2306C11.2143 19.93 10.5723 20.7758 10.11 21.7206C9.88 22.2806 8.98 22.5606 8.22 23.0806L8.51 24.4506H6.25C6.72 23.9006 6.14 23.2406 6.75 22.5906C7.17 22.1406 7.17 21.2906 7.38 20.5206L8.65 20.4006C8.81 19.9206 8.55 19.4006 9.14 18.9606C9.5 18.7306 9.57 18.1006 9.84 17.7006C10.11 17.3006 10.54 16.9006 10.96 16.4306C10.51 15.3706 9.34 15.8806 8.54 15.5306C7.09 16.2306 6.05 15.4606 5 14.5806C4.59154 14.236 4.12397 13.9684 3.62 13.7906C2.72284 13.3948 1.98838 12.7035 1.53895 11.8319C1.08952 10.9603 0.95225 9.9611 1.15 9.00062C1.43 9.52062 1.43 9.52062 1.81 9.14062L1.15 9.00062ZM9 8.18063H9.4L9.58 7.47062C8.89 7.48062 8.89 7.48063 9 8.18063ZM11 8.49062C10.874 8.38818 10.7364 8.30091 10.59 8.23062C10.59 8.23062 10.42 8.38062 10.43 8.44062C10.4795 8.56114 10.5433 8.67529 10.62 8.78062L11 8.49062ZM11.55 9.49062L11.29 9.42062L11.15 9.99062L11.36 10.0506L11.55 9.49062Z"
-              fill="currentColor"
-            />
-            <path
-              d="M23.3592 24.9999L23.4492 25.6199L22.4492 26.0299L23.0692 24.8799L23.3592 24.9999Z"
-              fill="currentColor"
-            />
-            <path
-              d="M6.53078 25.4001L5.65078 25.8301L5.55078 24.8301L6.53078 25.4001Z"
-              fill="currentColor"
-            />
-            <path
-              d="M21.6493 26.2402L21.4593 26.6802L21.2793 26.6202L21.4193 26.1602L21.6493 26.2402Z"
-              fill="currentColor"
-            />
-            <path d="M5.31 26.8496V27.3396L5 26.9996L5.31 26.8496Z" fill="currentColor" />
-          </svg>
 
-           <div class="text-center text-brown text-mid">
-            <SanityContent :value="test.test" />
+          <div class="my-auto">
+            <div class="text-start text-brown text-mid pt-4">
+              <SanityContent :value="test.test" />
+            </div>
+            <p class="text-start text-green text-mid pt-6">
+              {{ test.testName }}
+            </p>
           </div>
-          <p class="text-center text-brown text-mid mt-6">
-            {{ test.testName }}
-          </p>
         </SwiperSlide>
       </Swiper>
     </ClientOnly>
   </section>
 </template>
-
 
 <style>
 .swiper-wrapper {
@@ -105,7 +79,7 @@ const modules = [Autoplay];
 }
 
 .swiper-slide {
-  width: 60%;
+  width: 55%;
   height: auto; /* override Swiper's default height: 100% */
 }
 

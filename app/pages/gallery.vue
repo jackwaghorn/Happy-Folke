@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 
 import { galleryQuery } from "~/sanity/queries";
 const { data: galleryPage } = await useSanityQuery(galleryQuery);
-console.log(galleryPage?.value);
 </script>
 <template>
   <main class="w-full bg-off-white pt-12 md:pt-20">

@@ -1,7 +1,7 @@
 <template>
-  <div class="relative h-30 md:h-100 text-brown bg-white w-full overflow-hidden">
+  <div class="relative h-30 md:h-60 text-brown bg-off-white w-full overflow-hidden">
     <div class="-bottom-1 left-0 -mt-1 w-full absolute">
-      <RoughLine color="#6D3409" :flipped="false" />
+      <RoughLine color="#D1D1AF" :flipped="false" />
     </div>
     <div class="walker">
       <svg
@@ -125,7 +125,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 20%; /* however wide you want the character */
+  width: 15%; /* however wide you want the character */
   animation: walk-across 25s linear infinite;
 }
 
