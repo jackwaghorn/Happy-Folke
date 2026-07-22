@@ -57,9 +57,7 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   },
   seedText,
   gardenerTitle,
-  gardenerSubtitle,
-  gardenerText,
-  gardenerImage{
+  leftIllustration{
     ...,
     asset->{
       _id,
@@ -67,6 +65,19 @@ export const homepageQuery = `*[_type == "homepage"][0]{
       metadata{ dimensions, lqip }
     }
   },
+  questions[]{
+    theQuestion
+  },
+  questionBottomCaption,
+  rightIllustration{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+  bottomText,
   testTitle,
   testText,
   testimonials[]{
@@ -92,9 +103,10 @@ export const homepageQuery = `*[_type == "homepage"][0]{
 
 
 export const aboutQuery = `*[_type == "about"][0]{
-title,
-biographyText,
-    bioImage{
+  title,
+  biographyText,
+
+  bioImage{
     ...,
     asset->{
       _id,
@@ -102,21 +114,96 @@ biographyText,
       metadata{ dimensions, lqip }
     }
   },
+
+  firstPara,
+
+  firstGardenImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+
+  secondGardenImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+
+  secondPara,
+
+  thirdGardenImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+
+  fourthGardenImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
+
+  thirdPara,
+
+  fithGardenImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  }
 }`
 
 export const servicesQuery = `*[_type == "services"][0]{
   title,
   servicesText,
+
   services[]{
     title,
     description,
-    image{
+
+    beforeImage{
       ...,
       asset->{
         _id,
         _type,
         url,
         metadata{ dimensions, lqip }
+      }
+    },
+
+    afterImage{
+      ...,
+      asset->{
+        _id,
+        _type,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    },
+
+    gallery[]{
+      image{
+        ...,
+        asset->{
+          _id,
+          _type,
+          url,
+          metadata{ dimensions, lqip }
+        }
       }
     }
   }

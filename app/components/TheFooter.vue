@@ -3,12 +3,12 @@ import { motion } from "motion-v";
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="w-full z-5 ">
     <!-- <img class="w-50" src="~/assets/img/mower.png" alt=""> -->
     <HomeStickMan />
   </div>
 
-  <footer class="bg-green w-full relative p-3 md:p-6">
+  <footer class="bg-green w-full relative p-3 md:p-6 z-10">
     <div class="bg-brown rounded-xl w-full relative mt-38">
       <div class="w-full flex justify-between items-start">
         <div class="text-base text-off-white p-3 md:p-6 font-bold flex gap-6 flex-row">
@@ -20,7 +20,7 @@ import { motion } from "motion-v";
 
         <NuxtLink class="no-underline! p-6" to="/contact">
           <motion.div
-            class="text-brown bg-off-white outline outline-[#ffffff65] hover:outline-0 hover:text-brown hover:bg-off-white group h-10 md:h-11 flex items-center justify-center cursor-pointer relative px-4 md:px-6"
+            class="text-brown bg-off-white outline outline-[#ffffff65] rounded-full hover:outline-0 hover:text-brown hover:bg-off-white group h-10 md:h-11 flex items-center justify-center cursor-pointer relative px-4 md:px-6"
             :while-hover="{
               scale: 1.02,
             }"

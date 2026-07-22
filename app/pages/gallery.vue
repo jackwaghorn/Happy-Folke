@@ -10,7 +10,7 @@ import { galleryQuery } from "~/sanity/queries";
 const { data: galleryPage } = await useSanityQuery(galleryQuery);
 </script>
 <template>
-  <main class="w-full bg-off-white pt-12 md:pt-20">
+  <main class="w-full bg-off-white pt-12 md:pt-20 z-10">
     <div class="w-full relative">
       <!-- Previous -->
       <button
@@ -80,9 +80,9 @@ const { data: galleryPage } = await useSanityQuery(galleryQuery);
 
             <!-- Caption -->
             <div
-              class="absolute inset-x-0 bottom-0 p-4 pb-3 flex"
+              class="absolute inset-x-0 bottom-0 p-0 flex w-[calc(100%-4rem)]"
             >
-              <p class=" text-brown bg-off-white">
+              <p class=" text-brown p-4 bg-[#f0efd6c3]">
                <span class="">{{ slide.title }}</span><span v-if="slide.title && slide.caption">:</span> {{ slide.caption }}
               </p>
 
@@ -90,7 +90,7 @@ const { data: galleryPage } = await useSanityQuery(galleryQuery);
           </SwiperSlide>
         </Swiper>
 
-        <div class="gallery-fraction left-full! w-auto! fixed right-0! bottom-0 z-10 text-brown! bg-off-white me-12 mb-3 flex! ms-auto! whitespace-nowrap"></div>
+        <div class="gallery-fraction z-10 left-full! w-auto! fixed right-0! bottom-0 z-10 text-brown! bg-off-white me-12 mb-3 flex! ms-auto! whitespace-nowrap"></div>
       </div>
     </div>
   </main>

@@ -2,6 +2,10 @@
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import trowl from "~/assets/img/small/trowl.png";
+import snippers from "~/assets/img/small/snippers.png";
+import fork from "~/assets/img/small/fork.png";
+import hoe from "~/assets/img/small/hoe.png";
 
 const props = defineProps<{
   title?: string;
@@ -10,15 +14,19 @@ const props = defineProps<{
 }>();
 
 const modules = [Autoplay];
+const tools = [trowl, snippers, fork, hoe];
+function toolFor(index: number) {
+  return tools[index % tools.length];
+}
 </script>
 <template>
   <section class="pt-20 md:pt-40 pb-6 bg-off-white">
-    <h2 class="text-large-2 text-center relative z-1 mb-8 text-brown">
+    <h2 class="text-super-large text-center relative z-1 mb-8 text-brown w-8/12 mx-auto">
       {{ title }}
     </h2>
 
     <div class="w-full flex items-center justify-center pb-12">
-      <div class="px-2 w-full md:w-4/12 text-center text-brown mt-6">
+      <div class="px-2 w-full md:w-6/12 text-center text-mid text-brown mt-6">
         <SanityContent :value="text" />
       </div>
     </div>
@@ -31,7 +39,7 @@ const modules = [Autoplay];
         :space-between="120"
         :loop="true"
         :speed="1000"
-        :autoplay="{ delay: 5000, disableOnInteraction: true }"
+        :autoplay="{ delay: 5000 }"
         class="my-6 h-full"
       >
         <SwiperSlide
@@ -39,6 +47,11 @@ const modules = [Autoplay];
           v-for="(test, i) in testimonials"
           :key="i"
         >
+          <img
+            :src="toolFor(i)"
+            alt=""
+            class="absolute top-0 right-0 w-16 md:w-30 pe-2 pt-2 pointer-events-none select-none"
+          />
           <svg
             class="absolute top-0 left-0 w-22 ps-8 pt-8 text-yellow"
             viewBox="0 0 46 34"
@@ -59,7 +72,7 @@ const modules = [Autoplay];
             />
           </svg>
 
-          <div class="my-auto">
+          <div class="my-auto relative z-1">
             <div class="text-start text-brown text-mid pt-4">
               <SanityContent :value="test.test" />
             </div>

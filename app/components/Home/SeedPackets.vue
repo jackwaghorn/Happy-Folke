@@ -46,7 +46,7 @@ function yFor(index: number) {
 </script>
 
 <template>
-  <section class="flex flex-col pb-20 md:pb-40 bg-off-white relative">
+  <section class="flex flex-col pb-20 md:pb-40 bg-off-white relative z-1">
     <!-- Line top -->
     <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">
       <RoughLine color="#F0EFD6" :flipped="false" />
@@ -71,7 +71,7 @@ function yFor(index: number) {
         <motion.div
           :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
           :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
-          class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl bg-[#D1D1AF] overflow-hidden relative flex flex-col items-between justify-between"
+          class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl  overflow-hidden relative flex flex-col items-between justify-between"
         >
           <!-- hole -->
           <div
@@ -89,13 +89,13 @@ function yFor(index: number) {
           <div class="w-full p-4 mt-auto">
         
             <div
-              class="flex items-center justify-start font-bold text-brown text-large leading-8 mb-3 tracking-tight"
+              class="flex items-center justify-start font-bold  text-large leading-8 mb-3 tracking-tight"
             >
               {{ packet.title }}
 
           </div>
           
-            <div class="w-full pt-2 border-t border-brown text-brown text-small">
+            <div class="w-full pt-2 border-t border-current  text-small">
               {{ packet.caption }}
             </div>
           </div>
@@ -106,7 +106,7 @@ function yFor(index: number) {
     <div class="mt-60 md:mt-30 flex flex-col items-center gap-4">
       <NuxtLink to="/services">
         <motion.div
-          class="text-brown outline outline-[#6d340937] hover:outline-0 bg-white hover:text-off-white hover:bg-brown group h-10 flex items-center justify-center cursor-pointer relative mt-3 px-4"
+          class="text-brown outline outline-[#6d340937] rounded-full hover:outline-0 bg-white hover:text-off-white hover:bg-brown group h-10 flex items-center justify-center cursor-pointer relative mt-3 px-4"
           :while-hover="{
             scale: 1.02,
           }"
@@ -142,15 +142,24 @@ function yFor(index: number) {
 /* Top offset applies to the inner card, not the wrapper */
 .packet:nth-child(1) > .packet-card {
   top: 3.5rem;
+  background:#6D3409;
+  color: #F0EFD6;
+  
 }
 .packet:nth-child(2) > .packet-card {
   top: 1rem;
+  background:#A5AB00;
+  color:#6D3409;
 }
 .packet:nth-child(3) > .packet-card {
   top: 0;
+  background:#45532F;
+  color: #F0EFD6;
 }
 .packet:nth-child(4) > .packet-card {
   top: 3.5rem;
+  background:#D1D1AF;
+  color: #6D3409;
 }
 
 /* Mobile overrides */

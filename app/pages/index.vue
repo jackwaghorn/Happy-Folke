@@ -16,7 +16,7 @@ const isAtTop = computed(() => {
     <!-- Breaker -->
     <div
       :class="isAtTop ? 'text-green bg-green' : 'text-off-white bg-off-white'"
-      class="w-full -mt-6 h-30 transition z-10 sticky top-[-40px] "
+      class="w-full -mt-3 h-30 transition z-10 sticky top-[-40px] "
     >
       <!-- Line top -->
       <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">
@@ -63,9 +63,11 @@ const isAtTop = computed(() => {
 
     <HomeGardenerLandscaper
       :title="home?.gardenerTitle"
-      :subtitle="home?.gardenerSubtitle"
-      :text="home?.gardenerText"
-      :image="home?.gardenerImage"
+      :leftIllustration="home?.leftIllustration"
+      :questions="home?.questions"
+      :questionBottomCaption="home?.questionBottomCaption"
+      :rightIllustration="home?.rightIllustration"
+      :bottomText="home?.bottomText"
     />
     </div>
 
