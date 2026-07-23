@@ -36,7 +36,7 @@ const { data: about } = await useSanityQuery(aboutQuery);
         </div>
       </div>
       <!-- Arrow -->
-      <div class="w-full flex items-center justify-center">
+      <div class="w-full hidden md:flex items-center justify-center">
         <svg
           class="w-18 md:w-32 -mt-20 text-green"
           viewBox="0 0 110 145"

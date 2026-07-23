@@ -1,5 +1,7 @@
 <template>
-  <div class="scene relative h-[30vw] md:h-[15vw] text-brown  bg-off-white w-full overflow-hidden">
+  <div
+    class="scene relative h-[30vw] md:h-[15vw] text-brown bg-off-white w-full overflow-hidden"
+  >
     <!-- Before: base layer, always fully visible underneath -->
     <div class="bottom-0 left-0 -mt-1 w-full absolute z-0">
       <svg
@@ -53,8 +55,12 @@
         autoplay
         loop
         muted
-            playsinline
-    webkit-playsinline
+        playsinline
+        webkit-playsinline
+        disablepictureinpicture
+        disableRemotePlayback
+        controlslist="nodownload noremoteplayback nofullscreen"
+        preload="auto"
         src="~/assets/mowing_v3.mp4"
       ></video>
     </div>
@@ -102,23 +108,21 @@
 }
 
 @media (min-width: 767px) {
-
   .scene {
-  animation: progress 20s linear infinite;
-}
-.walker {
-  position: absolute;
-  bottom: 4px;
-  width: 12%;
-  left: calc(var(--progress) * 112% - 12%);
-}
+    animation: progress 20s linear infinite;
+  }
+  .walker {
+    position: absolute;
+    bottom: 4px;
+    width: 12%;
+    left: calc(var(--progress) * 112% - 12%);
+  }
 
-.flat {
-  clip-path: inset(0 0 0 calc(100% - (var(--progress) * 112%)));
-}
-.bushy {
-  clip-path: inset(0 calc(var(--progress) * 112%) 0 0);
-}
-
+  .flat {
+    clip-path: inset(0 0 0 calc(100% - (var(--progress) * 112%)));
+  }
+  .bushy {
+    clip-path: inset(0 calc(var(--progress) * 112%) 0 0);
+  }
 }
 </style>
