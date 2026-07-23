@@ -3,22 +3,22 @@ import { motion } from "motion-v";
 </script>
 
 <template>
-  <div class="w-full z-5 ">
+  <div class="w-full z-5 md:-mb-1">
     <!-- <img class="w-50" src="~/assets/img/mower.png" alt=""> -->
     <HomeStickMan />
   </div>
 
   <footer class="bg-green w-full relative p-3 md:p-6 z-10">
-    <div class="bg-brown rounded-xl w-full relative mt-38">
-      <div class="w-full flex justify-between items-start">
-        <div class="text-base text-off-white p-3 md:p-6 font-bold flex gap-6 flex-row">
+    <div class="bg-brown rounded-3xl w-full relative mt-38">
+      <div class="w-full flex-row flex justify-between items-start">
+        <div class="text-base text-off-white p-3 md:p-6 ms-1 mt-1 md:ms-0 md:mt-0 font-bold flex gap-2 md:gap-6 flex-col md:flex-row">
           <NuxtLink to="/">Home</NuxtLink>
           <NuxtLink to="/about">About</NuxtLink>
           <NuxtLink to="/services">Services</NuxtLink>
           <NuxtLink to="/gallery">Gallery</NuxtLink>
         </div>
 
-        <NuxtLink class="no-underline! p-6" to="/contact">
+        <NuxtLink class="no-underline! p-3 md:p-6 mt-0" to="/contact">
           <motion.div
             class="text-brown bg-off-white outline outline-[#ffffff65] rounded-full hover:outline-0 hover:text-brown hover:bg-off-white group h-10 md:h-11 flex items-center justify-center cursor-pointer relative px-4 md:px-6"
             :while-hover="{
@@ -36,10 +36,10 @@ import { motion } from "motion-v";
         </NuxtLink>
       </div>
       <div
-        class="w-full flex flex-col md:flex-row justify-between md:items-end mt-12 md:mt-28"
+        class="w-full flex flex-col md:flex-row justify-between md:items-end mt-18 md:mt-28"
       >
         <svg
-          class="w-full text-off-white px-6"
+          class="w-full text-off-white px-2 pb-6 md:pb-0 md:px-6"
           viewBox="0 0 1399 173"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ import { motion } from "motion-v";
           />
         </svg>
 
-        <div class="text-green absolute bottom right-0 p-5">
+        <div class="text-green absolute bottom-2 md:bottom-0 text-small md:text-base left-0 md:left-auto m-auto text-center right-0 md:p-5">
           <p>Copyright © 2026</p>
         </div>
       </div>

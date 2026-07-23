@@ -5,9 +5,9 @@ const { data: about } = await useSanityQuery(aboutQuery);
 </script>
 <template>
   <main class="relative w-full min-h-full h-full z-1">
-    <section class="w-full bg-off-white pt-30 md:pt-40">
+    <section class="w-full bg-off-white pt-24 md:pt-40">
       <!-- Bio section -->
-      <div class="md:mx-50 p-4 grid md:grid-cols-2 gap-12 md:gap-24">
+      <div class="md:mx-50 p-4 grid md:grid-cols-2 gap-6 md:gap-24">
         <div
           class="flex flex-col gap-4 items-center my-auto md:items-start justify-center md:justify-start"
         >
@@ -38,7 +38,7 @@ const { data: about } = await useSanityQuery(aboutQuery);
       <!-- Arrow -->
       <div class="w-full flex items-center justify-center">
         <svg
-          class="w-32 -mt-20 text-green"
+          class="w-18 md:w-32 -mt-20 text-green"
           viewBox="0 0 110 145"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -61,13 +61,13 @@ const { data: about } = await useSanityQuery(aboutQuery);
         </svg>
       </div>
       <!-- First garden -->
-      <div class="mx-50 flex flex-col gap-6 p-4">
+      <div class="md:mx-50 flex flex-col gap-6 p-4">
         <!-- Para one -->
-        <div class="text-mid text-brown text-center my-20 mt-8">
+        <div class="text-mid text-brown md:text-center md:my-20 mt-8">
           <SanityContent :value="about?.firstPara" />
         </div>
         <!-- Images one -->
-        <div class="grid grid-cols-2 gap-4 mx-40">
+        <div class="grid md:grid-cols-2 gap-4 md:mx-40">
           <div class="w-full rounded-2xl overflow-hidden bg-brown">
             <motion.div
               :initial="{ opacity: 0 }"
@@ -104,11 +104,11 @@ const { data: about } = await useSanityQuery(aboutQuery);
           </div>
         </div>
         <!-- Para two -->
-        <div class="text-mid text-brown text-center my-20">
+        <div class="text-mid text-brown md:text-center md:my-20">
           <SanityContent :value="about?.secondPara" />
         </div>
         <!-- Images two -->
-        <div class="grid grid-cols-2 gap-4 mx-40">
+        <div class="grid md:grid-cols-2 gap-4 md:mx-40">
           <div class="w-full rounded-2xl overflow-hidden bg-brown">
             <motion.div
               :initial="{ opacity: 0 }"
@@ -145,7 +145,7 @@ const { data: about } = await useSanityQuery(aboutQuery);
           </div>
         </div>
         <!-- Para three -->
-        <div class="text-mid text-brown text-center my-20">
+        <div class="text-mid text-brown md:text-center md:my-20">
           <SanityContent :value="about?.thirdPara" />
         </div>
       </div>
@@ -180,7 +180,8 @@ const { data: about } = await useSanityQuery(aboutQuery);
           v-if="about?.fithGardenImage"
           :image="about.fithGardenImage"
           alt="First garden image one"
-          class="w-full aspect-[7/3] object-cover"
+          :preserve-aspect-ratio="false"
+          class="w-full apsect-square md:aspect-[7/3] object-cover"
         />
       </div>
     </section>

@@ -11,26 +11,19 @@ const props = defineProps<{
 </script>
 
 <template>
-  <section class="bg-off-white w-full py-30 relative">
-    <!-- Line top -->
-    <div class="top-0 -mt-1 md:-mt-3 w-full absolute">
-      <RoughLine color="#F0EFD6" :flipped="false" />
-    </div>
-    <!-- Line bottom -->
-    <div class="bottom-0 -mb-1 md:-mb-3 w-full absolute">
-      <RoughLine color="#F0EFD6" :flipped="true" />
-    </div>
+  <section class="bg-off-white w-full py-0 md:py-12 lg:py-30 relative">
 
-    <div class="md:mx-60 md:bg-green  px-16 p-4 md:rounded-[60px] grid md:grid-cols-12 gap-2">
+
+    <div class="mx-4 md:mx-8 lg:mx-30 xl:mx-60 bg-green  md:px-4 lg:px-16 p-4 rounded-4xl md:rounded-[60px] grid md:grid-cols-12 gap-2">
       <!-- Title -->
-      <div class="flex flex-col gap-8 items-center justify-center my-16 col-span-12">
+      <div class="flex flex-col gap-8 items-center justify-center my-12 mb-0 md:my-16 col-span-12">
         <h2 class="text-brown text-center text-large-2">
           {{ title }}
         </h2>
       </div>
       <!-- Left illustration -->
       <div class="col-span-12 md:col-span-5 w-full flex items-center justify-center">
-        <div class="w-[70%] mx-auto">
+        <div class="w-4/12 md:w-[70%] mx-auto">
           <SanityImage
             v-if="leftIllustration"
             :image="leftIllustration"
@@ -43,15 +36,15 @@ const props = defineProps<{
       <div
         class="md:text-mid text-brown text-start col-span-12 md:col-span-7 flex flex-col"
       >
-        <div class="flex flex-col gap-2 ms-auto">
+        <div class="flex flex-col gap-1 md:gap-2  md:md-0">
           <div
             v-for="(q, index) in questions"
             :key="q.theQuestion"
-            class="flex gap-3 items-center border-b border-off-white pb-3"
+            class="flex gap-1 md:gap-3 items-center pb-3"
           >
-            <div>
+            <div class="order-2 md:order-1 ms-auto md:ms-0">
               <svg
-                class="w-3.5 text-brown"
+                class="w-3.5 text-off-white md:text-brown"
                 viewBox="0 0 17 15"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,18 +55,18 @@ const props = defineProps<{
                 />
               </svg>
             </div>
-            <p class=" text-base">{{ q.theQuestion }}</p>
+            <p class="text-base order-1 md:order-2 me-auto md:me-auto">{{ q.theQuestion }}</p>
           </div>
-          <p class="font-bold">{{ questionBottomCaption }}</p>
+          <p class="italic">{{ questionBottomCaption }}</p>
         </div>
       </div>
       <!-- Bottom text -->
-      <div class="col-span-12 md:col-span-7 text-brown md:mt-16">
+      <div class="col-span-12 md:col-span-7 text-brown mt-6 md:mt-16">
         <SanityContent :value="bottomText" />
       </div>
       <!-- Right illustration -->
-      <div class="col-span-12 md:col-span-5 w-full flex items-end justify-center">
-        <div class="w-5/12 mx-auto">
+      <div class="col-span-12 md:col-span-5 w-full mt-6 md:mt-0 flex items-end justify-center ">
+        <div class="w-3/12 md:w-5/12 mx-auto">
           <SanityImage
             v-if="rightIllustration"
             :image="rightIllustration"
@@ -82,7 +75,7 @@ const props = defineProps<{
           />
         </div>
       </div>
-      <div class="col-span-12 flex items-center justify-center mt-14 mb-20">
+      <div class="col-span-12 flex items-center justify-center mt-6 md:mt-14 mb-12 md:mb-20">
         <NuxtLink to="/contact" class="">
           <motion.div
             class="group h-10 rounded-full flex items-center justify-center cursor-pointer relative px-4 text-brown outline hover:outline-0 bg-off-white outline-[#6d340930] hover:text-off-white hover:bg-brown"

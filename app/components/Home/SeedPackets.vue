@@ -48,17 +48,17 @@ function yFor(index: number) {
 <template>
   <section class="flex flex-col pb-20 md:pb-40 bg-off-white relative z-1">
     <!-- Line top -->
-    <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">
+    <div class="top-0 left-0 -mt-1 md:-mt-2 lg:-mt-2 xl:-mt-3 w-full absolute">
       <RoughLine color="#F0EFD6" :flipped="false" />
     </div>
     <!-- Title -->
     <h2 class="text-brown text-center text-large-2 pt-16">Gardening services</h2>
-    <div class="w-full md:w-7/12 mx-auto text-center text-brown text-mid mt-12 mb-18">
+    <div class="w-full md:w-10/12 lg:w-7/12 mx-auto text-center text-brown text-mid mt-6 md:mt-12 mb-10 md:mb-18 px-2">
       <SanityContent :value="text" />
     </div>
     <!-- Packet container -->
     <div
-      class="relative flex flex-col md:flex-row items-center justify-center px-10 md:px-60"
+      class="relative flex flex-col md:flex-row items-center justify-center px-10 md:px-20 lg:px-40 xl:px-60"
     >
       <NuxtLink
         :to="`/services#${packet.title}`"
@@ -94,16 +94,16 @@ function yFor(index: number) {
               v-if="packet.image"
               :image="packet.image"
               :alt="packet.title"
-              class="w-full absolute top-0 bottom-0 m-auto left-0 pb-5"
+              class="w-full absolute top-0 bottom-0 mt-auto md:m-auto left-0 md:pb-5"
             />
-            <div class="w-full p-4 mt-auto">
+            <div class="w-full p-4 mt-8 md:mt-auto">
               <div
-                class="flex items-center justify-start font-bold text-large leading-8 mb-3 tracking-tight"
+                class="flex items-center justify-center md:justify-start font-bold text-large leading-8 mb-3 tracking-tight"
               >
                 {{ packet.title }}
               </div>
 
-              <div class="w-full pt-2 border-t border-current text-small">
+              <div class="w-full pt-2 border-t hidden md:block border-current text-small">
                 {{ packet.caption }}
               </div>
             </div>
@@ -165,7 +165,7 @@ function yFor(index: number) {
   color: #f0efd6;
 }
 .packet:nth-child(4) .packet-card {
-  top: 3.5rem;
+  /* top: 3.5rem; */
   background: #d1d1af;
   color: #6d3409;
 }
@@ -185,16 +185,16 @@ function yFor(index: number) {
     transform: rotate(3deg);
   }
 
-  .packet:nth-child(1) > .packet-card {
+  .packet:nth-child(1)  .packet-card {
     top: 0;
   }
-  .packet:nth-child(2) > .packet-card {
+  .packet:nth-child(2)  .packet-card {
     top: 0;
   }
-  .packet:nth-child(3) > .packet-card {
+  .packet:nth-child(3)  .packet-card {
     top: 0;
   }
-  .packet:nth-child(4) > .packet-card {
+  .packet:nth-child(4)  .packet-card {
     top: 0;
   }
 }

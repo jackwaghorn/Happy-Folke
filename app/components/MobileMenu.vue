@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { motion, stagger, type MotionProps } from 'motion-v'
 
 const isOpen = ref(false)
@@ -99,7 +98,7 @@ const links = [
     <motion.div
       :variants="sidebarVariants"
       class="absolute inset-0 w-screen h-screen  pointer-events-auto transition"
-      :class="isOpen ? 'pointer-events-auto bg-off-white' : 'pointer-events-none bg-[#f0efd66a] backdrop-blur-sm delay-300'"
+      :class="isOpen ? 'pointer-events-auto bg-off-white' : 'pointer-events-none bg-off-white delay-300'"
     />
 
     <!-- Nav items -->

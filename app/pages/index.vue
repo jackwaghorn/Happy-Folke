@@ -16,10 +16,10 @@ const isAtTop = computed(() => {
     <!-- Breaker -->
     <div
       :class="isAtTop ? 'text-green bg-green' : 'text-off-white bg-off-white'"
-      class="w-full -mt-3 h-30 transition z-10 sticky top-[-40px] "
+      class="w-full -mt-3 h-30 transition z-10 sticky top-[-56px] md:top-[-40px]"
     >
       <!-- Line top -->
-      <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">
+      <div class="top-0 left-0 -mt-1 md:-mt-2 lg:-mt-2 xl:-mt-3 w-full absolute">
         <svg
           class="transition"
           viewBox="0 0 1560 17"
@@ -32,7 +32,7 @@ const isAtTop = computed(() => {
           />
         </svg>
       </div>
-      <div class="bottom-0 left-0 -mb-1 md:-mb-3 w-full absolute">
+      <div class="bottom-0 left-0 -mb-1 md:-mb-2 lg:-mb-2 xl:-mb-3 w-full absolute">
         <svg
           class="scale-x-[-1] scale-y-[-1] transition"
           viewBox="0 0 1560 17"

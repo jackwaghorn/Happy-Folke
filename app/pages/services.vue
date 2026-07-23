@@ -20,15 +20,15 @@ const modules = [Autoplay, Navigation, Pagination];
         </div>
       </div>
       <!-- Cards  -->
-      <div class="md:mx-50 flex flex-col gap-4 md:gap-12 mt-16 pb-20 md:p-0 p-4">
+      <div class="md:mx-50 flex flex-col gap-4 md:gap-24 mt-16 pb-20 md:p-0 p-4">
         <div
           :id="service.title"
           v-for="(service, index) in servicesPage?.services"
           :key="index"
-          class="bg-green group group w-full grid scroll-mt-30 md:grid-cols-12 gap-4 p-3 rounded-4xl"
+          class="bg-[#d1d1af40] group group w-full grid scroll-mt-30 grid-cols-1 md:grid-cols-12 gap-4 p-3 rounded-2xl md:rounded-4xl"
         >
           <div
-            class="col-span-5 flex items-start justify-center flex-col group-even:order-2 group-odd:ps-4"
+            class="col-span-5 flex items-start justify-center pb-2 md:pb-0 flex-col md:group-even:order-2 md:group-odd:ps-4 relative"
           >
             <h2 class="text-brown text-mid font-bold mb-2">{{ service.title }}</h2>
             <div class="text-brown text-base">
@@ -71,7 +71,7 @@ const modules = [Autoplay, Navigation, Pagination];
               ></div>
             </div>
             <div
-              class="group-odd:ms-auto w-10/12"
+              class="md:group-odd:ms-auto w-full md:w-10/12"
               v-else-if="service?.gallery?.length > 0"
             >
               <ClientOnly>
@@ -85,7 +85,7 @@ const modules = [Autoplay, Navigation, Pagination];
                   :centered-slides="true"
                   :space-between="0"
                   :autoplay="true"
-                  class="h-full w-full outline-2 outline-brown rounded-3xl relative"
+                  class="h-full w-full outline-2 outline-brown rounded-xl md:rounded-3xl relative"
                   :loop="true"
                 >
                   <SwiperSlide
@@ -101,7 +101,7 @@ const modules = [Autoplay, Navigation, Pagination];
                         :preserve-aspect-ratio="false"
                         loading="lazy"
                         sizes="(min-width: 1024px) 40vw, 100vw"
-                        class="aspect-[3/2] object-cover mb-auto"
+                        class="aspect-[3/2] w-full object-cover mb-auto"
                       />
                     </div>
                   </SwiperSlide>

@@ -9,6 +9,18 @@ import trowl from "~/assets/img/small/trowl.png";
 import snippers from "~/assets/img/small/snippers.png";
 import fork from "~/assets/img/small/fork.png";
 import hoe from "~/assets/img/small/hoe.png";
+const swiperBreakpoints = {
+  // mobile-first: default (0px+) values
+  0: {
+    slidesPerView: "auto",
+    spaceBetween: 12,
+  },
+  // tablet/desktop breakpoint
+  768: {
+    slidesPerView: "auto",
+    spaceBetween: 200,
+  },
+};
 
 const props = defineProps<{
   title?: string;
@@ -67,12 +79,12 @@ function onClick() {
 </script>
 <template>
   <section class="pt-20 md:pt-40 pb-6 bg-off-white">
-    <h2 class="text-super-large text-center relative z-1 mb-8 text-brown w-8/12 mx-auto">
+    <h2 class="text-super-large text-center relative z-1 md:mb-8 text-brown w-full md:w-8/12 mx-auto">
       {{ title }}
     </h2>
 
-    <div class="w-full flex items-center justify-center pb-12">
-      <div class="px-2 w-full md:w-6/12 text-center text-mid text-brown mt-6">
+    <div class="w-full flex items-center justify-center pb-2 md:pb-12">
+      <div class="px-2 w-full md:w-10/12 xl:w-6/12 text-center text-mid text-brown mt-6">
         <SanityContent :value="text" />
       </div>
     </div>
@@ -90,7 +102,7 @@ function onClick() {
           :modules="modules"
           :slides-per-view="'auto'"
           :centered-slides="true"
-          :space-between="200"
+             :breakpoints="swiperBreakpoints"
           :loop="true"
           :speed="500"
           :autoplay="{ delay: 5000 }"
@@ -98,7 +110,7 @@ function onClick() {
           @swiper="onSwiperInit"
         >
           <SwiperSlide
-            class="border bg-[#f0efd64b] border-green md:bg-white pt-12 md:pt-20 p-8 md:p-8 rounded-3xl h-full relative flex! flex-col w-[60%]"
+            class="border bg-[#f0efd64b] border-green md:bg-white pt-12 md:pt-20 p-3 md:p-8 rounded-3xl h-full relative flex! flex-col w-full md:w-[60%]"
             v-for="(test, i) in testimonials"
             :key="i"
           >
@@ -108,7 +120,7 @@ function onClick() {
               class="absolute top-0 right-0 w-16 md:w-30 pe-2 pt-2 pointer-events-none select-none"
             />
             <svg
-              class="absolute top-0 left-0 w-22 ps-8 pt-8 text-yellow"
+              class="absolute top-0 left-0 w-16 md:w-22 pt-3 ps-3 md:ps-8 md:pt-8 text-yellow"
               viewBox="0 0 46 34"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +151,7 @@ function onClick() {
         </Swiper>
 
         <motion.div
-          class="z-10 pointer-events-none text-brown backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
+          class="z-10 pointer-events-none hidden md:block text-brown backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
           aria-label="Slide Navigation"
           role="button"
           :animate="{

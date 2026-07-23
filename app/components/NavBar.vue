@@ -13,13 +13,13 @@ const isAtTop = computed(() => {
     <div class="relative w-full z-1">
       <div
         :class="isAtTop ? 'bg-transparent text-white' : ' text-brown '"
-        class="px-4 md:px-12 transition grid grid-cols-2 md:grid-cols-3 rounded-lg ps-1 md:p-3 pb-0"
+        class="px-4 lg:px-12 transition grid grid-cols-2 md:grid-cols-3 rounded-lg ps-1 md:p-3 pb-0"
       >
         <!-- Pages -->
         <div class="md:hidden">
           <MobileMenu />
         </div>
-        <div class="hidden md:flex gap-8 items-center font-bold">
+        <div class="hidden md:flex gap-3 lg:gap-8 items-center font-bold">
           <NuxtLink class="nav-link" to="/">Home</NuxtLink>
           <NuxtLink class="nav-link" to="/about">About</NuxtLink>
           <NuxtLink class="nav-link" to="/services">Services</NuxtLink>
@@ -147,7 +147,7 @@ const isAtTop = computed(() => {
     </div>
     <div
       v-if="route.name !== 'index'"
-      class="w-full -mt-3 h-30 transition absolute top-[-28px] z-0 bg-off-white text-off-white"
+      class="w-full -mt-3 h-30 transition absolute top-[-40px] md:top-[-28px] z-0 bg-off-white text-off-white"
     >
       <!-- Line top -->
       <div class="top-0 left-0 -mt-1 md:-mt-3 w-full absolute">

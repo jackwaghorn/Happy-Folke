@@ -1,7 +1,7 @@
 <template>
-  <div class="scene relative h-30 md:h-40 text-brown bg-off-white w-full overflow-hidden">
+  <div class="scene relative h-[30vw] md:h-[15vw] text-brown  bg-off-white w-full overflow-hidden">
     <!-- Before: base layer, always fully visible underneath -->
-    <div class="-bottom-1 left-0 -mt-1 w-full absolute">
+    <div class="bottom-0 left-0 -mt-1 w-full absolute z-0">
       <svg
         class="scale-x-[-1] text-green bushy"
         viewBox="0 0 1634 24"
@@ -15,7 +15,7 @@
       </svg>
     </div>
     <!-- Transition svg -->
-    <div class="-bottom-1 left-0 -mt-1 w-full absolute">
+    <div class="bottom-0 left-0 -mt-1 w-full absolute z-0">
       <svg
         class="scale-x-[-1] text-green transition-bushy"
         viewBox="0 0 1634 24"
@@ -29,7 +29,7 @@
       </svg>
     </div>
     <!-- After -->
-    <div class="-bottom-1 left-0 w-full absolute">
+    <div class="bottom-0 left-0 w-full absolute z-0">
       <svg
         class="scale-x-[-1] transition text-green flat"
         viewBox="0 0 1634 16"
@@ -44,7 +44,7 @@
     </div>
 
     <!-- cut trail: grows from the left, its right edge = mower's leading edge -->
-    <div class="cut-trail absolute bottom-1 h-10 left-0 bg-off-white"></div>
+    <div class="cut-trail absolute bottom-0 h-10 left-0 bg-off-white"></div>
 
     <!-- mower -->
     <div class="walker mix-blend-darken">
@@ -59,7 +59,6 @@
   </div>
 </template>
 
-
 <style>
 @property --progress {
   syntax: "<number>";
@@ -68,7 +67,7 @@
 }
 
 .scene {
-  animation: progress 20s linear infinite;
+  animation: progress 10s linear infinite;
 }
 
 @keyframes progress {
@@ -82,7 +81,32 @@
 
 .walker {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
+  width: 34%;
+  left: calc(var(--progress) * 134% - 34%);
+  z-index: 10;
+}
+
+.flat {
+  clip-path: inset(0 0 0 calc(100% - (var(--progress) * 134%)));
+}
+.bushy {
+  clip-path: inset(0 calc(var(--progress) * 134%) 0 0);
+}
+.transition-bushy {
+  clip-path: inset(
+    calc((1 - min(1, max(0, (var(--progress) - 0.8) / 0.2))) * 100%) 0 0 0
+  );
+}
+
+@media (min-width: 767px) {
+
+  .scene {
+  animation: progress 20s linear infinite;
+}
+.walker {
+  position: absolute;
+  bottom: 4px;
   width: 12%;
   left: calc(var(--progress) * 112% - 12%);
 }
@@ -93,12 +117,6 @@
 .bushy {
   clip-path: inset(0 calc(var(--progress) * 112%) 0 0);
 }
-.transition-bushy {
-  clip-path: inset(
-    calc((1 - min(1, max(0, (var(--progress) - 0.80) / 0.20))) * 100%)
-    0
-    0
-    0
-  );
+
 }
 </style>

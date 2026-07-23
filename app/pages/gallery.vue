@@ -92,7 +92,7 @@ function onClick() {
       </button>
 
       <div
-        class="relative w-full h-[calc(100vh-5rem)] cursor-default bg-green"
+        class="relative w-full h-[calc(100vh-5rem)] cursor-default bg-off-white md:bg-[#d1d1af40]"
         ref="sliderContainer"
         @mousemove="onMouseMove"
         @mouseenter="onMouseEnter"
@@ -149,11 +149,11 @@ function onClick() {
         </Swiper>
 
         <div
-          class="gallery-fraction  left-full! w-auto! absolute right-0! bottom-0 text-brown! p-1 me-12 mb-2 flex! ms-auto! whitespace-nowrap"
+          class="gallery-fraction z-1  w-auto! absolute right-0 bottom-0 text-brown! me-2 mb-2 flex! ms-auto! whitespace-nowrap"
         ></div>
 
           <motion.div
-          class="z-10 pointer-events-none text-brown bg-[#f0efd641]  backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
+          class="z-10 pointer-events-none text-brown hidden md:block bg-[#f0efd641]  backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
           aria-label="Slide Navigation"
           role="button"
           :animate="{

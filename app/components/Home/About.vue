@@ -10,22 +10,22 @@ const props = defineProps([
 ]);
 </script>
 <template>
-  <section class="w-full relative pb-32 overflow-hidden bg-white">
+  <section class="w-full relative pb-8 md:pb-32 overflow-hidden bg-white">
     <!-- Opening para -->
-    <div class="w-full relative my-34">
+    <div class="w-full relative my-12 mt-20 md:mt-34 md:my-34">
       <div
-        class="w-full px-2 md:w-8/12 text-brown text-large-2 text-center mx-auto relative z-1"
+        class="w-full px-2 md:10/12 lg:w-8/12 text-brown text-large-2 text-center mx-auto relative z-1"
       >
         <SanityContent :value="paraLeft" />
       </div>
     </div>
 
     <!-- Image columns -->
-    <div class="w-full px-4 md:px-70 grid md:grid-cols-2 gap-0 md:gap-32">
+    <div class="w-full px-4 sm:px-30 lg:px-70 grid md:grid-cols-2 gap-0 md:gap-8 lg:gap-32">
       <!-- Left col -->
       <div class="flex flex-col">
         <!-- Image 1 -->
-        <div class="md:mb-20 w-full bg-brown rounded-xl overflow-hidden">
+        <div class="md:mb-20 w-7/10 mx-auto md:w-full bg-brown rounded-xl overflow-hidden">
           <motion.div
             :initial="{ opacity: 0 }"
             :while-in-view="{ opacity: 1 }"
@@ -45,7 +45,7 @@ const props = defineProps([
         <div class="z-0">
           <SanityImage
             :image="leftIllustration"
-            class="w-full md:w-6/12 mx-auto"
+            class="w-4/12 md:w-6/12 my-4 md:my-0 mx-auto"
             alt="Gardener at work"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
@@ -55,7 +55,7 @@ const props = defineProps([
       <div class="flex flex-col md:order-2 order-1">
         <!-- Spade -->
         <div class="z-0 order-2 md:order-2">
-          <div class="w-5/12 mx-auto pb-10 text-off-white flex">
+          <div class="w-3/12 mt-8 md:mt-0 md:w-5/12 mx-auto pb-6 md:pb-10 text-off-white flex">
             <SanityImage
               :image="rightIllustration"
               class="w-full mx-auto"
@@ -66,7 +66,7 @@ const props = defineProps([
         </div>
         <!-- Image 3 -->
         <div class="flex items-center justify-center z-1 order-1 md:order-2">
-        <div class="w-full rounded-xl overflow-hidden bg-brown">
+        <div class="w-7/10 mx-auto md:w-full rounded-xl overflow-hidden bg-brown">
         
           <motion.div
             :initial="{ opacity: 0 }"
@@ -87,8 +87,8 @@ const props = defineProps([
       </div>
     </div>
     <!-- CTA -->
-    <div class="flex flex-col items-center justify-center mt-30">
-      <div class="text-brown text-center w-full md:w-6/12 text-mid">
+    <div class="flex flex-col items-center justify-center md:mt-30 p-3">
+      <div class="text-brown text-center w-full md:w-10/12 lg:w-6/12 text-mid ">
         <SanityContent :value="bioIntro" />
       </div>
       <NuxtLink to="/about" class="mt-3">

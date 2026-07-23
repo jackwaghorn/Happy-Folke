@@ -21,7 +21,7 @@ const props = defineProps(["subtitle"]);
     >
      <div class="flex flex-col items-center justify-center m-auto w-full px-4">
   <motion.h1
-    class="w-full md:w-8/12 text-center mx-auto py-4 text-large-2 text-white font-bold"
+    class="w-full md:10/12 lg:w-8/12 text-center mx-auto py-4 text-large-2 text-white font-bold"
     :initial="{ opacity: 0, y: 24 }"
     :animate="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.6, ease: 'easeOut' }"
