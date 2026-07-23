@@ -53,6 +53,8 @@
         autoplay
         loop
         muted
+            playsinline
+    webkit-playsinline
         src="~/assets/mowing_v3.mp4"
       ></video>
     </div>
