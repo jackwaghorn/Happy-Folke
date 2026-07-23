@@ -9,32 +9,33 @@ const modules = [Autoplay, Navigation, Pagination];
 </script>
 <template>
   <main class="relative w-full min-h-full h-full z-1">
-    <section class="w-full bg-off-white pt-30 md:pt-46">
+    <section class="w-full bg-off-white pt-30 md:pt-42">
       <!-- Title -->
       <div class="md:mx-50">
         <h1 class="text-brown text-center my-auto text-large font-bold">
           {{ servicesPage?.title }}
         </h1>
-        <div
-          class="my-auto text-center px-2 text-brown w-full md:w-8/10 mx-auto mt-8"
-        >
+        <div class="my-auto text-center px-2 text-brown w-full md:w-7/10 mx-auto mt-11">
           <SanityContent :value="servicesPage?.servicesText" />
         </div>
       </div>
       <!-- Cards  -->
-      <div class="md:mx-50 flex flex-col gap-4 md:gap-24 mt-24 pb-20 md:p-0 p-4">
+      <div class="md:mx-50 flex flex-col gap-4 md:gap-12 mt-16 pb-20 md:p-0 p-4">
         <div
+          :id="service.title"
           v-for="(service, index) in servicesPage?.services"
           :key="index"
-          class="bg-[#ffffff87] group  group w-full grid md:grid-cols-12 gap-4 p-3 rounded-4xl"
+          class="bg-green group group w-full grid scroll-mt-30 md:grid-cols-12 gap-4 p-3 rounded-4xl"
         >
-          <div class="col-span-5 flex items-start justify-center flex-col group-even:order-2 group-odd:ps-4">
+          <div
+            class="col-span-5 flex items-start justify-center flex-col group-even:order-2 group-odd:ps-4"
+          >
             <h2 class="text-brown text-mid font-bold mb-2">{{ service.title }}</h2>
             <div class="text-brown text-base">
               {{ service.description }}
             </div>
           </div>
-          <div class="col-span-7 ">
+          <div class="col-span-7">
             <div
               v-if="service.beforeImage && service.afterImage"
               class="relative w-[98%] mx-auto -mt-14 py-14 aspect-[5/4]"
@@ -48,6 +49,7 @@ const modules = [Autoplay, Navigation, Pagination];
                   alt="service before image"
                   :preserve-aspect-ratio="false"
                   class="w-full h-full object-cover object-center"
+                  sizes="(min-width: 1024px) 30vw, 100vw"
                 />
               </div>
 
@@ -60,6 +62,7 @@ const modules = [Autoplay, Navigation, Pagination];
                   alt="service after image"
                   :preserve-aspect-ratio="false"
                   class="w-full h-full object-cover object-center"
+                  sizes="(min-width: 1024px) 30vw, 100vw"
                 />
               </div>
               <!-- Outline shape -->
@@ -67,7 +70,10 @@ const modules = [Autoplay, Navigation, Pagination];
                 class="absolute bottom-0 rotate-2 z-0 right-0 w-[55%] aspect-square rounded-3xl outline-2 outline-[#8B4513] overflow-hidden"
               ></div>
             </div>
-            <div class="group-odd:ms-auto w-10/12" v-else-if="service?.gallery?.length > 0">
+            <div
+              class="group-odd:ms-auto w-10/12"
+              v-else-if="service?.gallery?.length > 0"
+            >
               <ClientOnly>
                 <Swiper
                   :modules="modules"

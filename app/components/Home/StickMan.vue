@@ -1,5 +1,5 @@
 <template>
-  <div class="scene relative h-30 md:h-50 text-brown bg-off-white w-full overflow-hidden">
+  <div class="scene relative h-30 md:h-40 text-brown bg-off-white w-full overflow-hidden">
     <!-- Before: base layer, always fully visible underneath -->
     <div class="-bottom-1 left-0 -mt-1 w-full absolute">
       <svg

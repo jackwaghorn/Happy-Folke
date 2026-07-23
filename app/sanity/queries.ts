@@ -56,6 +56,17 @@ export const homepageQuery = `*[_type == "homepage"][0]{
     caption
   },
   seedText,
+ gallery[]{
+      image{
+        ...,
+        asset->{
+          _id,
+          _type,
+          url,
+          metadata{ dimensions, lqip }
+        }
+      }
+    },
   gardenerTitle,
   leftIllustration{
     ...,
@@ -83,21 +94,6 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   testimonials[]{
     test,
     testName
-  },
-  "gallery": *[_type == "gallery"][0]{
-    images[]{
-      image{
-        ...,
-        asset->{
-          _id,
-          _type,
-          url,
-          metadata{ dimensions, lqip }
-        }
-      },
-      title,
-      caption
-    }
   }
 }`
 

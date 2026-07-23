@@ -2,7 +2,7 @@
 import { motion } from "motion-v";
 
 const props = defineProps<{
-  packets?: Array<{ title: string; image: any; caption:string }>;
+  packets?: Array<{ title: string; image: any; caption: string }>;
   text?: any;
 }>();
 
@@ -10,7 +10,7 @@ const seeds = computed(() =>
   (props.packets ?? []).slice(0, 4).map((packet) => ({
     title: packet.title,
     image: packet.image,
-    caption: packet.caption
+    caption: packet.caption,
   }))
 );
 
@@ -52,7 +52,7 @@ function yFor(index: number) {
       <RoughLine color="#F0EFD6" :flipped="false" />
     </div>
     <!-- Title -->
-    <h2 class="text-brown text-center text-large-2 pt-20">Gardening services</h2>
+    <h2 class="text-brown text-center text-large-2 pt-16">Gardening services</h2>
     <div class="w-full md:w-7/12 mx-auto text-center text-brown text-mid mt-12 mb-18">
       <SanityContent :value="text" />
     </div>
@@ -60,7 +60,8 @@ function yFor(index: number) {
     <div
       class="relative flex flex-col md:flex-row items-center justify-center px-10 md:px-60"
     >
-      <div
+      <NuxtLink
+        :to="`/services#${packet.title}`"
         v-for="(packet, index) in seeds"
         :key="index"
         :style="{ zIndex: zIndexFor(index) }"
@@ -69,38 +70,46 @@ function yFor(index: number) {
         class="packet relative w-8/12 md:w-1/4 even:ms-10 odd:-ms-10 md:even:ms-0 md:odd:ms-0 -mb-40 md:mb-0 group cursor-pointer"
       >
         <motion.div
-          :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
-          :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
-          class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl  overflow-hidden relative flex flex-col items-between justify-between"
+          :initial="{ opacity: 0.75, y: 50 }"
+          :while-in-view="{ opacity: 1, y: 0 }"
+          :viewport="{ once: true, amount: 0.3 }"
+          :transition="{
+            type: 'spring',
+            stiffness: 300,
+            damping: 15,
+            delay: Math.min(index * 0.08, 0.6),
+          }"
         >
-          <!-- hole -->
-          <div
-            class="absolute top-6 w-[40%] bg-off-white h-6 left-0 right-0 rounded-full border border-brown z-1 mx-auto"
-          ></div>
-
-        
-
-          <SanityImage
-            v-if="packet.image"
-            :image="packet.image"
-            :alt="packet.title"
-            class="w-full absolute top-0 bottom-0 m-auto left-0 pb-5"
-          />
-          <div class="w-full p-4 mt-auto">
-        
+          <motion.div
+            :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
+            :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
+            class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl overflow-hidden relative flex flex-col items-between justify-between"
+          >
+            <!-- hole -->
             <div
-              class="flex items-center justify-start font-bold  text-large leading-8 mb-3 tracking-tight"
-            >
-              {{ packet.title }}
+              class="absolute top-6 w-[40%] bg-off-white h-6 left-0 right-0 rounded-full border border-brown z-1 mx-auto"
+            ></div>
 
-          </div>
-          
-            <div class="w-full pt-2 border-t border-current  text-small">
-              {{ packet.caption }}
+            <SanityImage
+              v-if="packet.image"
+              :image="packet.image"
+              :alt="packet.title"
+              class="w-full absolute top-0 bottom-0 m-auto left-0 pb-5"
+            />
+            <div class="w-full p-4 mt-auto">
+              <div
+                class="flex items-center justify-start font-bold text-large leading-8 mb-3 tracking-tight"
+              >
+                {{ packet.title }}
+              </div>
+
+              <div class="w-full pt-2 border-t border-current text-small">
+                {{ packet.caption }}
+              </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
-      </div>
+      </NuxtLink>
     </div>
 
     <div class="mt-60 md:mt-30 flex flex-col items-center gap-4">
@@ -140,26 +149,25 @@ function yFor(index: number) {
 }
 
 /* Top offset applies to the inner card, not the wrapper */
-.packet:nth-child(1) > .packet-card {
+.packet:nth-child(1) .packet-card {
   top: 3.5rem;
-  background:#6D3409;
-  color: #F0EFD6;
-  
+  background: #6d3409;
+  color: #f0efd6;
 }
-.packet:nth-child(2) > .packet-card {
+.packet:nth-child(2) .packet-card {
   top: 1rem;
-  background:#A5AB00;
-  color:#6D3409;
+  background: #a5ab00;
+  color: #6d3409;
 }
-.packet:nth-child(3) > .packet-card {
+.packet:nth-child(3) .packet-card {
   top: 0;
-  background:#45532F;
-  color: #F0EFD6;
+  background: #45532f;
+  color: #f0efd6;
 }
-.packet:nth-child(4) > .packet-card {
+.packet:nth-child(4) .packet-card {
   top: 3.5rem;
-  background:#D1D1AF;
-  color: #6D3409;
+  background: #d1d1af;
+  color: #6d3409;
 }
 
 /* Mobile overrides */
