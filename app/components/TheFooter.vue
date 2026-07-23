@@ -3,12 +3,12 @@ import { motion } from "motion-v";
 </script>
 
 <template>
-  <div class="w-full z-5 md:-mb-1">
-    <!-- <img class="w-50" src="~/assets/img/mower.png" alt=""> -->
+  
+  <div class="w-full z-10 bg-green relative">
     <HomeStickMan />
   </div>
 
-  <footer class="bg-green w-full relative p-3 md:p-6 z-10">
+  <footer class="bg-green w-full relative p-3 md:p-6 z-[5]">
     <div class="bg-brown rounded-3xl w-full relative mt-38">
       <div class="w-full flex-row flex justify-between items-start">
         <div class="text-base text-off-white p-3 md:p-6 ms-1 mt-1 md:ms-0 md:mt-0 font-bold flex gap-2 md:gap-6 flex-col md:flex-row">

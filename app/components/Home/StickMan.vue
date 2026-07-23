@@ -1,9 +1,9 @@
 <template>
   <div
-    class="scene relative h-[30vw] md:h-[15vw] text-brown bg-off-white w-full overflow-hidden"
+    class="scene relative h-[30vw] md:h-[15vw] text-brown bg-off-white  w-full overflow-hidden"
   >
     <!-- Before: base layer, always fully visible underneath -->
-    <div class="bottom-0 left-0 -mt-1 w-full absolute z-0">
+    <div class="-bottom-0.5 left-0 -mt-1 w-full absolute z-0">
       <svg
         class="scale-x-[-1] text-green bushy"
         viewBox="0 0 1634 24"
@@ -17,7 +17,7 @@
       </svg>
     </div>
     <!-- Transition svg -->
-    <div class="bottom-0 left-0 -mt-1 w-full absolute z-0">
+    <div class="-bottom-0.5 left-0 -mt-1 w-full absolute z-0">
       <svg
         class="scale-x-[-1] text-green transition-bushy"
         viewBox="0 0 1634 24"
@@ -31,7 +31,7 @@
       </svg>
     </div>
     <!-- After -->
-    <div class="bottom-0 left-0 w-full absolute z-0">
+    <div class="-bottom-0.5 left-0 w-full absolute z-0">
       <svg
         class="scale-x-[-1] transition text-green flat"
         viewBox="0 0 1634 16"
@@ -89,7 +89,7 @@
 
 .walker {
   position: absolute;
-  bottom: -2px;
+  bottom: -3px;
   width: 34%;
   left: calc(var(--progress) * 134% - 34%);
   z-index: 10;
