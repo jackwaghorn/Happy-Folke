@@ -99,6 +99,7 @@ function onClick() {
         @mouseleave="onMouseLeave"
         @click="onClick"
       >
+      <client-only>
         <Swiper
           :modules="[Navigation, Pagination]"
           :slides-per-view="1"
@@ -147,7 +148,7 @@ function onClick() {
             </div>
           </SwiperSlide>
         </Swiper>
-
+</client-only>
         <div
           class="gallery-fraction z-1  w-auto! absolute right-0 bottom-0 text-brown! me-2 mb-2 flex! ms-auto! whitespace-nowrap"
         ></div>

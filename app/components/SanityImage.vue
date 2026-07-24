@@ -37,6 +37,6 @@ const aspectRatio = computed(() => {
     :loading="loading ?? 'lazy'"
     :style="{ aspectRatio }"
     decoding="async"
-    class=""
+    class="object-cover"
   />
 </template>

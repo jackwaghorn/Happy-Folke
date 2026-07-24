@@ -7,7 +7,7 @@ const props = defineProps(["subtitle"]);
   <div class="w-full h-screen relative">
     <!-- Background -->
     <video
-      class="absolute inset-0 -z-10 h-screen w-screen object-cover brightness-75"
+      class="absolute inset-0 -z-10 h-screen w-screen object-cover brightness-75 bg-brown"
       autoplay
       muted
       loop

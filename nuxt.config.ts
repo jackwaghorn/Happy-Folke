@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'Happy Folke Gardens', // default fallback title
       htmlAttrs: {
@@ -18,6 +19,7 @@ export default defineNuxtConfig({
     projectId: 'pw4670k6',
     useCdn: false,
   },
+  
   image: {
     sanity: {
       projectId: 'pw4670k6',

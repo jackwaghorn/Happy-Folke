@@ -22,8 +22,8 @@ const props = defineProps<{
         </h2>
       </div>
       <!-- Left illustration -->
-      <div class="col-span-12 md:col-span-5 w-full flex items-center justify-center">
-        <div class="w-4/12 md:w-[70%] mx-auto">
+      <div class="col-span-12 md:col-span-5 w-full hidden md:flex items-center justify-center">
+        <div class="w-4/12 md:w-[65%] mx-auto">
           <SanityImage
             v-if="leftIllustration"
             :image="leftIllustration"
@@ -34,9 +34,9 @@ const props = defineProps<{
       </div>
       <!-- Questions -->
       <div
-        class="md:text-mid text-brown text-start col-span-12 md:col-span-7 flex flex-col"
+        class="md:text-mid text-brown text-start col-span-12 md:col-span-7 mt-10 md:mt-0 flex flex-col"
       >
-        <div class="flex flex-col gap-1 md:gap-2  md:md-0">
+        <div class="flex flex-col md:gap-1  md:md-0">
           <div
             v-for="(q, index) in questions"
             :key="q.theQuestion"
@@ -44,7 +44,7 @@ const props = defineProps<{
           >
             <div class="order-2 md:order-1 ms-auto md:ms-0">
               <svg
-                class="w-3.5 text-off-white md:text-brown"
+                class="w-4 md:w-3.5 text-off-white md:text-brown"
                 viewBox="0 0 17 15"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
