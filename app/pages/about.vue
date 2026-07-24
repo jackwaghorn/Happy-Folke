@@ -9,9 +9,9 @@ const { data: about } = await useSanityQuery(aboutQuery);
       <!-- Bio section -->
       <div class="md:mx-50 p-4 grid md:grid-cols-2 gap-6 md:gap-24">
         <div
-          class="flex flex-col gap-4 items-center my-auto md:items-start justify-center md:justify-start"
+          class="flex flex-col gap-4  my-auto items-start justify-center md:justify-start"
         >
-          <h2 class="text-brown text-center md:text-start text-large font-bold">
+          <h2 class="text-brown text-start text-large font-bold">
             {{ about?.title }}
           </h2>
           <div class="md:text-mid text-brown text-start">
@@ -61,9 +61,9 @@ const { data: about } = await useSanityQuery(aboutQuery);
         </svg>
       </div>
       <!-- First garden -->
-      <div class="md:mx-50 flex flex-col gap-6 p-4">
+      <div class="md:mx-50 flex flex-col gap-6 pt-2 md:pt-4 p-4">
         <!-- Para one -->
-        <div class="text-mid text-brown md:text-center md:my-20 mt-8">
+        <div class="text-base md:text-mid text-brown md:text-center md:my-20">
           <SanityContent :value="about?.firstPara" />
         </div>
         <!-- Images one -->
@@ -104,7 +104,7 @@ const { data: about } = await useSanityQuery(aboutQuery);
           </div>
         </div>
         <!-- Para two -->
-        <div class="text-mid text-brown md:text-center md:my-20">
+        <div class="text-base md:text-mid text-brown md:text-center md:my-20">
           <SanityContent :value="about?.secondPara" />
         </div>
         <!-- Images two -->
@@ -145,7 +145,7 @@ const { data: about } = await useSanityQuery(aboutQuery);
           </div>
         </div>
         <!-- Para three -->
-        <div class="text-mid text-brown md:text-center md:my-20">
+        <div class="text-base md:text-mid text-brown md:text-center pb-1 md:my-20">
           <SanityContent :value="about?.thirdPara" />
         </div>
       </div>

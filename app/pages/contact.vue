@@ -6,8 +6,8 @@ const { data: contact } = await useSanityQuery(contactQuery);
   <main class="relative w-full min-h-full bg-off-white h-full z-1">
     <section class="w-full pt-24 md:pt-40">
       <div class="md:mx-50 p-4 grid md:grid-cols-2 gap-6 md:gap-12">
-        <div class="flex flex-col gap-4 md:gap-6 items-center md:items-start justify-center md:justify-start">
-          <h2 class="text-brown text-center md:text-start text-large md:text-large-2 font-bold">{{contact.title}}</h2>
+        <div class="flex flex-col gap-4 md:gap-6 items-start justify-center md:justify-start">
+          <h2 class="text-brown text-start text-large md:text-large-2 font-bold">{{contact.title}}</h2>
           <div class="md:text-mid text-brown text-start">
            <SanityContent :value="contact?.contactText" />
           </div>

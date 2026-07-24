@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: ['@nuxt/fonts', '@nuxt/image', '@vueuse/nuxt', 'motion-v/nuxt', '@nuxtjs/sanity'],
   sanity: {
     projectId: 'pw4670k6',

@@ -16,7 +16,7 @@ const props = defineProps<{
 
     <div class="mx-4 md:mx-8 lg:mx-30 xl:mx-60 bg-green  md:px-4 lg:px-16 p-4 rounded-4xl md:rounded-[60px] grid md:grid-cols-12 gap-2">
       <!-- Title -->
-      <div class="flex flex-col gap-8 items-center justify-center my-12 mb-0 md:my-16 col-span-12">
+      <div class="flex flex-col gap-8 items-center justify-center mt-10 md:mt-16 my-12 mb-0 md:my-16 col-span-12">
         <h2 class="text-brown text-center text-large-2">
           {{ title }}
         </h2>

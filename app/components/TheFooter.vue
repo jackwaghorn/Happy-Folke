@@ -9,7 +9,7 @@ import { motion } from "motion-v";
   </div>
 
   <footer class="bg-green w-full relative p-3 md:p-6 z-[5]">
-    <div class="bg-brown rounded-3xl w-full relative mt-38">
+    <div class="bg-brown rounded-3xl w-full relative mt-18 md:mt-38">
       <div class="w-full flex-row flex justify-between items-start">
         <div class="text-base text-off-white p-3 md:p-6 ms-1 mt-1 md:ms-0 md:mt-0 font-bold flex gap-2 md:gap-6 flex-col md:flex-row">
           <NuxtLink to="/">Home</NuxtLink>
@@ -36,10 +36,10 @@ import { motion } from "motion-v";
         </NuxtLink>
       </div>
       <div
-        class="w-full flex flex-col md:flex-row justify-between md:items-end mt-18 md:mt-28"
+        class="w-full flex flex-col md:flex-row justify-between md:items-end mt-12 md:mt-28"
       >
         <svg
-          class="w-full text-off-white px-2 pb-6 md:pb-0 md:px-6"
+          class="w-full text-off-white px-3 pb-6 md:pb-0 md:px-6"
           viewBox="0 0 1399 173"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ import { motion } from "motion-v";
           />
         </svg>
 
-        <div class="text-green absolute bottom-2 md:bottom-0 text-small md:text-base left-0 md:left-auto m-auto text-center right-0 md:p-5">
+        <div class="text-green absolute bottom-3 md:bottom-0 text-small md:text-base left-0 md:left-auto m-auto text-center right-0 md:p-5">
           <p>Copyright © 2026</p>
         </div>
       </div>

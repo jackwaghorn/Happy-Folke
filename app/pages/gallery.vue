@@ -59,7 +59,7 @@ function onClick() {
     <div class="w-full relative">
       <!-- Previous -->
       <button
-        class="text-brown bg-[#f0efd638] md:bg-[#6d34090d] p-4 rounded-full hover:bg-[#6d340926] cursor-pointer gallery-prev absolute left-2 md:left-5 top-1/2 z-20 -translate-y-1/2 flex  md:hidden h-12 w-12 items-center justify-center transition"
+        class="text-brown bg-[#f0efd638] md:bg-[#6d34090d] p-4 rounded-full hover:bg-[#6d340926] cursor-pointer gallery-prev absolute left-2 md:left-5 top-1/2 z-20 -translate-y-1/2 flex md:hidden h-12 w-12 items-center justify-center transition"
       >
         <svg
           class="w-6"
@@ -99,62 +99,61 @@ function onClick() {
         @mouseleave="onMouseLeave"
         @click="onClick"
       >
-      <client-only>
-        <Swiper
-          :modules="[Navigation, Pagination]"
-          :slides-per-view="1"
-          :navigation="{
-            nextEl: '.gallery-next',
-            prevEl: '.gallery-prev',
-          }"
-          @swiper="onSwiperInit"
-          :pagination="{
-            type: 'fraction',
-            el: '.gallery-fraction',
-            renderFraction: function (currentClass, totalClass) {
-              return `<span class='pagination-custom'><span class=\'${currentClass}\'></span> / <span class=\'${totalClass}\'></span></span>`;
-            },
-          }"
-          class="h-full"
-          :loop="true"
-        >
-          <SwiperSlide
-            v-for="(slide, index) in galleryPage?.images"
-            :key="index"
-            class="relative"
+        <client-only>
+          <Swiper
+            :modules="[Navigation, Pagination]"
+            :slides-per-view="1"
+            :navigation="{
+              nextEl: '.gallery-next',
+              prevEl: '.gallery-prev',
+            }"
+            @swiper="onSwiperInit"
+            :pagination="{
+              type: 'fraction',
+              el: '.gallery-fraction',
+              renderFraction: function (currentClass, totalClass) {
+                return `<span class='pagination-custom'><span class=\'${currentClass}\'></span> / <span class=\'${totalClass}\'></span></span>`;
+              },
+            }"
+            class="h-full"
+            :loop="true"
           >
-            <SanityImage
-              v-if="slide.image"
-              :image="slide.image"
-              :alt="slide.title"
-              :preserve-aspect-ratio="false"
-              loading="lazy"
-              sizes="(min-width: 1024px) 120vw, 100vw"
-              class="absolute inset-0 w-full h-full object-contain"
-            />
-
-            <!-- Caption -->
-            <div
-              class="absolute inset-x-0 bottom-0 p-3 flex w-[calc(100%-4rem)] md:w-1/3"
+            <SwiperSlide
+              v-for="(slide, index) in galleryPage?.images"
+              :key="index"
+              class="relative"
             >
-              <p
-                v-if="slide.title || slide.caption"
-                class="text-brown px-4 py-3 bg-[#f0efd676] backdrop-blur-sm rounded-xl"
+              <SanityImage
+                v-if="slide.image"
+                :image="slide.image"
+                :alt="slide.title"
+                :preserve-aspect-ratio="false"
+                loading="lazy"
+                sizes="(min-width: 1024px) 120vw, 100vw"
+                class="absolute inset-0 w-full h-full object-contain"
+              />
+
+              <!-- Caption -->
+              <div
+                class="absolute inset-x-0 bottom-0 p-3 flex w-[calc(100%-4rem)] md:w-1/3"
               >
-                <span class="">{{ slide.title }}</span
+                <p
+                  v-if="slide.title || slide.caption"
+                  class="text-brown px-4 py-3 bg-[#f0efd676] backdrop-blur-sm rounded-xl"
                 >
-                <span v-if="slide.title && slide.caption">:</span> {{ slide?.caption }}
-              </p>
-            </div>
-          </SwiperSlide>
-        </Swiper>
-</client-only>
+                  <span class="">{{ slide.title }}</span>
+                  <span v-if="slide.title && slide.caption">:</span> {{ slide?.caption }}
+                </p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </client-only>
         <div
-          class="gallery-fraction z-1  w-auto! absolute right-0 bottom-0 text-brown! me-2 mb-2 flex! ms-auto! whitespace-nowrap"
+          class="gallery-fraction z-1 w-auto! absolute right-0 bottom-0 text-brown! me-2 mb-2 flex! ms-auto! whitespace-nowrap"
         ></div>
 
-          <motion.div
-          class="z-10 pointer-events-none text-brown hidden md:block bg-[#f0efd641]  backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
+        <motion.div
+          class="z-10 pointer-events-none text-brown hidden md:block bg-[#f0efd641] backdrop-blur-sm border border-brown rounded-full w-20 h-20 p-7 absolute top-0 left-0"
           aria-label="Slide Navigation"
           role="button"
           :animate="{

@@ -9,23 +9,23 @@ const modules = [Autoplay, Navigation, Pagination];
 </script>
 <template>
   <main class="relative w-full min-h-full h-full z-1">
-    <section class="w-full bg-off-white pt-30 md:pt-42">
+    <section class="w-full bg-off-white pt-26 md:pt-42">
       <!-- Title -->
-      <div class="md:mx-50">
-        <h1 class="text-brown text-center my-auto text-large font-bold">
+      <div class="md:mx-50 p-4">
+        <h1 class="text-brown md:text-center my-auto text-large font-bold">
           {{ servicesPage?.title }}
         </h1>
-        <div class="my-auto text-center px-2 text-brown w-full md:w-7/10 mx-auto mt-11">
+        <div class="my-auto md:text-center md:px-2 text-brown w-full md:w-7/10 mx-auto mt-4 md:mt-11">
           <SanityContent :value="servicesPage?.servicesText" />
         </div>
       </div>
       <!-- Cards  -->
-      <div class="md:mx-50 flex flex-col gap-4 md:gap-24 mt-16 pb-20 md:p-0 p-4">
+      <div class="md:mx-50 flex flex-col gap-4 md:gap-24 mt-0 md:mt-16 pb-20 md:p-0 p-3">
         <div
           :id="service.title"
           v-for="(service, index) in servicesPage?.services"
           :key="index"
-          class="bg-[#d1d1af40] group group w-full grid scroll-mt-30 grid-cols-1 md:grid-cols-12 gap-4 p-3 rounded-2xl md:rounded-4xl"
+          class="bg-[#d1d1af7d] md:bg-[#d1d1af40] group group w-full grid scroll-mt-30 grid-cols-1 md:grid-cols-12 gap-4 p-3 rounded-2xl md:rounded-4xl"
         >
           <div
             class="col-span-5 flex items-start justify-center pb-2 md:pb-0 flex-col md:group-even:order-2 md:group-odd:ps-4 relative"
