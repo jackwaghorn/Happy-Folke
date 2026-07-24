@@ -1,0 +1,7 @@
+name = "contact-form-worker"
+main = "src/index.ts"
+compatibility_date = "2026-07-18"
+
+[[send_email]]
+name = "SEB"
+destination_address = "jakwagy@gmail.com"

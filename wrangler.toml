@@ -1,7 +1,0 @@
-name = "happy-folke-gardens"
-compatibility_date = "2026-07-24"
-pages_build_output_dir = "dist"   # whatever your Nuxt generate output folder is
-
-[[send_email]]
-name = "Rob"
-destination_address = "jakwagy@gmail.com"

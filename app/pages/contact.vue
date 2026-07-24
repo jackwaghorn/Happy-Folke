@@ -17,7 +17,7 @@ async function submitForm() {
   errorMessage.value = "";
 
   try {
-    await $fetch("/api/contact", {
+    await $fetch("https://contact-form-worker.jack-waghorn.workers.dev/", {
       method: "POST",
       body: { ...form },
     });
@@ -64,7 +64,7 @@ async function submitForm() {
               type="text"
               required
               placeholder="Name*"
-              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white"
+              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white transition-colors"
             />
 
             <!-- Email -->
@@ -73,7 +73,7 @@ async function submitForm() {
               type="email"
               required
               placeholder="Email address*"
-              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white"
+              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white transition-colors"
             />
 
             <!-- Phone -->
@@ -81,7 +81,7 @@ async function submitForm() {
               v-model="form.phone"
               type="tel"
               placeholder="Phone number"
-              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white"
+              class="w-full bg-[#ffffff84] px-4 py-3 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white transition-colors"
             />
 
             <!-- Message -->
@@ -89,23 +89,50 @@ async function submitForm() {
               v-model="form.message"
               rows="5"
               placeholder="Message"
-              class="w-full bg-[#ffffff84] px-4 py-3 mb-2 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white resize-none"
+              class="w-full bg-[#ffffff84] px-4 py-3 mb-2 rounded-xl text-brown placeholder-[#6d34097a] focus:outline-none focus:border-white resize-none transition-colors"
             ></textarea>
 
-            <p v-if="status === 'error'" class="text-red-600 text-sm">
-              {{ errorMessage }}
-            </p>
-            <p v-if="status === 'success'" class="text-green-700 text-sm">
-              Message sent — thanks!
-            </p>
+            <Transition
+              enter-active-class="transition-all duration-300 ease-out"
+              enter-from-class="opacity-0 -translate-y-1"
+              enter-to-class="opacity-100 translate-y-0"
+            >
+              <p
+                v-if="status === 'error'"
+                class="text-red-600 text-sm"
+              >
+                {{ errorMessage }}
+              </p>
+              <p
+                v-else-if="status === 'success'"
+                class="text-green-700 text-sm font-medium"
+              >
+                Message sent — thanks! We'll be in touch soon.
+              </p>
+            </Transition>
 
             <div class="flex w-full justify-end">
               <button
                 type="submit"
                 :disabled="status === 'sending'"
-                class="bg-yellow text-brown font-bold rounded-full px-5 py-3 transition disabled:opacity-50"
+                class="bg-yellow text-brown font-bold rounded-full px-5 py-3
+                       transition-all duration-150 ease-out
+                       hover:bg-yellow/90 hover:shadow-md hover:-translate-y-0.5
+                       active:translate-y-0 active:shadow-sm active:scale-95
+                       disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none"
               >
-                {{ status === "sending" ? "Sending..." : "Send Message" }}
+                <span class="inline-flex items-center gap-2">
+                  <svg
+                    v-if="status === 'sending'"
+                    class="animate-spin h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                  </svg>
+                  {{ status === "sending" ? "Sending..." : "Send Message" }}
+                </span>
               </button>
             </div>
           </form>
