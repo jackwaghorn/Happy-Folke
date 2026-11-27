@@ -40,12 +40,12 @@ const theme = computed(
 );
 </script>
 <template>
-  <nav class="fixed top-0 left-0 w-full z-20" :class="theme.strip">
+  <nav class="fixed top-0 left-0 w-full z-20 nav-noise" :class="theme.strip">
 
     <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
       <div
         :class="theme.text"
-        class="transition relative z-1 grid grid-cols-2 md:grid-cols-3 ps-1 md:px-0 md:p-3 pb-3 md:pb-0"
+        class="transition relative z-1 grid grid-cols-2 md:grid-cols-3 ps-1 md:px-0 md:p-3 pb-3 md:pb-3"
       >
         <!-- Pages -->
         <div class="md:hidden">

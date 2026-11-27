@@ -76,7 +76,7 @@ const next = () => swiperInstance.value?.slideNext();
       <button
         type="button"
         aria-label="Previous slide"
-        class="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#e7e7e79f] backdrop-blur text-brown border border-brown cursor-pointer transition hover:bg-brown hover:text-off-white"
+        class="absolute left-4 md:left-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#e7e7e79f] backdrop-blur text-brown border border-brown cursor-pointer transition hover:bg-brown hover:text-off-white"
         @click="prev"
       >
         <svg
@@ -96,7 +96,7 @@ const next = () => swiperInstance.value?.slideNext();
       <button
         type="button"
         aria-label="Next slide"
-        class="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#e7e7e79f] backdrop-blur text-brown border border-brown cursor-pointer transition hover:bg-brown hover:text-off-white"
+        class="absolute right-4 md:right-4 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#e7e7e79f] backdrop-blur text-brown border border-brown cursor-pointer transition hover:bg-brown hover:text-off-white"
         @click="next"
       >
         <svg
@@ -114,7 +114,7 @@ const next = () => swiperInstance.value?.slideNext();
 
       <!-- Dots -->
       <div
-        class="gallery-pagination absolute bottom-6 md:bottom-3 left-0 right-0 z-20 flex items-center justify-center gap-1.5"
+        class="gallery-pagination hidden absolute  bottom-3 left-0 right-0 z-20 md:flex items-center justify-center gap-1.5"
       ></div>
     </div>
   </section>
