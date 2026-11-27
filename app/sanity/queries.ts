@@ -9,8 +9,9 @@ export const SETTINGS_QUERY = defineQuery(`*[_type == "settings"][0] {
 
 export const homepageQuery = `*[_type == "homepage"][0]{
   subtitle,
-  bioIntro,
-  bioLeftImageOne{
+  bioSubheading,
+  paragraph,
+  bioIllustration{
     ...,
     asset->{
       _id,
@@ -18,31 +19,6 @@ export const homepageQuery = `*[_type == "homepage"][0]{
       metadata{ dimensions, lqip }
     }
   },
-    bioLeftIllustration{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-      bioRightIllustration{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-  bioLeftImageTwo{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-  paraLeft,
   seedPackets[]{
     title,
     image{
@@ -67,30 +43,6 @@ export const homepageQuery = `*[_type == "homepage"][0]{
         }
       }
     },
-  gardenerTitle,
-  leftIllustration{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-  questions[]{
-    theQuestion
-  },
-  questionBottomCaption,
-  rightIllustration{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-  bottomText,
-  testTitle,
-  testText,
   testimonials[]{
     test,
     testName
@@ -110,9 +62,7 @@ export const aboutQuery = `*[_type == "about"][0]{
       metadata{ dimensions, lqip }
     }
   },
-
   firstPara,
-
   firstGardenImage{
     ...,
     asset->{
@@ -121,7 +71,7 @@ export const aboutQuery = `*[_type == "about"][0]{
       metadata{ dimensions, lqip }
     }
   },
-
+secondPara,
   secondGardenImage{
     ...,
     asset->{
@@ -130,9 +80,7 @@ export const aboutQuery = `*[_type == "about"][0]{
       metadata{ dimensions, lqip }
     }
   },
-
-  secondPara,
-
+  thirdPara,
   thirdGardenImage{
     ...,
     asset->{
@@ -141,19 +89,8 @@ export const aboutQuery = `*[_type == "about"][0]{
       metadata{ dimensions, lqip }
     }
   },
-
+fourthPara,
   fourthGardenImage{
-    ...,
-    asset->{
-      _id,
-      url,
-      metadata{ dimensions, lqip }
-    }
-  },
-
-  thirdPara,
-
-  fithGardenImage{
     ...,
     asset->{
       _id,
@@ -166,11 +103,27 @@ export const aboutQuery = `*[_type == "about"][0]{
 export const servicesQuery = `*[_type == "services"][0]{
   title,
   servicesText,
-
+    servicesImage{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
+    }
+  },
   services[]{
     title,
     description,
-
+    colour,
+    illustration{
+      ...,
+      asset->{
+        _id,
+        _type,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    },
     beforeImage{
       ...,
       asset->{
@@ -180,7 +133,6 @@ export const servicesQuery = `*[_type == "services"][0]{
         metadata{ dimensions, lqip }
       }
     },
-
     afterImage{
       ...,
       asset->{
@@ -190,18 +142,34 @@ export const servicesQuery = `*[_type == "services"][0]{
         metadata{ dimensions, lqip }
       }
     },
+  }
+}`
 
-    gallery[]{
-      image{
-        ...,
-        asset->{
-          _id,
-          _type,
-          url,
-          metadata{ dimensions, lqip }
-        }
-      }
+export const faqsQuery = `*[_type == "faqs"][0]{
+  title,
+  faqsIllustration{
+    ...,
+    asset->{
+      _id,
+      url,
+      metadata{ dimensions, lqip }
     }
+  },
+  qanda[]{
+    question,
+    illustration{
+      ...,
+      asset->{
+        _id,
+        _type,
+        url,
+        metadata{ dimensions, lqip }
+      }
+    },
+    answer[]{
+    answer,
+    tick
+  }
   }
 }`
 

@@ -19,7 +19,11 @@ export default defineNuxtConfig({
     projectId: 'pw4670k6',
     useCdn: false,
   },
-  
+  fonts: {
+    families: [
+      { name: 'DM Serif Text', provider: 'google'},
+    ]
+  },
   image: {
     sanity: {
       projectId: 'pw4670k6',

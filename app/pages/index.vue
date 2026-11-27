@@ -8,17 +8,17 @@ const isAtTop = computed(() => {
   if (route.name !== "index") return false;
   return y.value < height.value - 70;
 }); // small threshold avoids flicker
+definePageMeta({ navTheme: "transparent" });
 </script>
 
 <template>
   <main class="relative w-full min-h-full h-full z-1">
     <HomeLandingPage :subtitle="home?.subtitle" />
     <!-- Breaker -->
-    <div
-      :class="isAtTop ? 'text-green bg-green' : 'text-off-white bg-off-white'"
+    <!-- <div
+      :class="isAtTop ? 'text-off-white bg-off-white' : 'text-off-white bg-off-white'"
       class="w-full -mt-3 h-30 transition z-10 sticky top-[-56px] md:top-[-40px]"
     >
-      <!-- Line top -->
       <div class="top-0 left-0 -mt-1 md:-mt-2 lg:-mt-2 xl:-mt-3 w-full absolute">
         <svg
           class="transition"
@@ -45,35 +45,21 @@ const isAtTop = computed(() => {
           />
         </svg>
       </div>
-    </div>
+    </div> -->
 
     <HomeAbout
-      :bioIntro="home?.bioIntro"
-      :left-image-one="home?.bioLeftImageOne"
-      :left-illustration="home?.bioLeftIllustration"
-      :right-illustration="home?.bioRightIllustration"
-      :left-image-two="home?.bioLeftImageTwo"
-      :para-left="home?.paraLeft"
+      :subheading="home?.bioSubheading"
+      :paragraph="home?.paragraph"
+      :illustration="home?.bioIllustration"
       
     />
 
     <HomeSeedPackets :packets="home?.seedPackets" :text="home?.seedText" />
     <div class="bg-white">
     <HomeGallery :gallery="home?.gallery" />
-
-    <HomeGardenerLandscaper
-      :title="home?.gardenerTitle"
-      :leftIllustration="home?.leftIllustration"
-      :questions="home?.questions"
-      :questionBottomCaption="home?.questionBottomCaption"
-      :rightIllustration="home?.rightIllustration"
-      :bottomText="home?.bottomText"
-    />
     </div>
 
     <HomeTestimonials
-      :title="home?.testTitle"
-      :text="home?.testText"
       :testimonials="home?.testimonials"
     />
   </main>

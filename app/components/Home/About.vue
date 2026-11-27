@@ -1,112 +1,50 @@
 <script setup>
 import { motion } from "motion-v";
-const props = defineProps([
-  "bioIntro",
-  "paraLeft",
-  "leftImageOne",
-  "leftIllustration",
-  "leftImageTwo",
-  "rightIllustration",
-]);
+const props = defineProps(["subheading", "paragraph", "illustration"]);
 </script>
 <template>
-  <section class="w-full relative pb-8 md:pb-32 overflow-hidden bg-white">
-    <!-- Opening para -->
-    <div class="w-full relative my-12 mt-20 md:mt-34 md:my-34">
-      <div
-        class="w-full px-2 md:10/12 lg:w-8/12 text-brown text-large-2 text-center mx-auto relative z-1"
-      >
-        <SanityContent :value="paraLeft" />
-      </div>
-    </div>
+  <section class="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-38 mx-auto">
+    <div class="w-full flex md:flex-row flex-col gap-8 md:gap-1 justify-between">
+      <!-- Opening para -->
+      <div class="order-2 md:order-1 text-start text-dark-brown w-full md:w-1/2 flex flex-col justify-center gap-3">
+        <!-- Subheading -->
+        <div class="text-subheading">
+          <SanityContent :value="subheading" />
+        </div>
+        <!-- Paragraph -->
+        <div class="text-body-lg-sans pb-1">
+          <SanityContent :value="paragraph" />
+        </div>
 
-    <!-- Image columns -->
-    <div class="w-full px-4 sm:px-30 lg:px-70 grid md:grid-cols-2 gap-0 md:gap-8 lg:gap-32">
-      <!-- Left col -->
-      <div class="flex flex-col">
-        <!-- Image 1 -->
-        <div class="md:mb-20 w-7/10 mx-auto md:w-full bg-brown rounded-xl overflow-hidden">
-          <motion.div
-            :initial="{ opacity: 0 }"
-            :while-in-view="{ opacity: 1 }"
-            :viewport="{ once: true, amount: 0.3 }"
-            :transition="{ duration: 0.6, ease: 'easeOut' }"
-            class=""
+
+          <UiSmallButton
+            :to="'/about'"
+            class="self-start "
+            variant="dark"
           >
-            <SanityImage
-              :image="leftImageOne"
-              alt="Gardener at work"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              class="w-full"
-            />
-          </motion.div>
-        </div>
-        <!-- Clippers -->
-        <div class="z-0">
-          <SanityImage
-            :image="leftIllustration"
-            class="w-4/12 md:w-6/12 my-4 md:my-0 mx-auto"
-            alt="Gardener at work"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
-        </div>
+            About Me
+          </UiSmallButton>
       </div>
-      <!-- Right col -->
-      <div class="flex flex-col md:order-2 order-1">
-        <!-- Spade -->
-        <div class="z-0 order-2 md:order-2">
-          <div class="w-3/12 mt-8 md:mt-0 md:w-5/12 mx-auto pb-6 md:pb-10 text-off-white flex">
-            <SanityImage
-              :image="rightIllustration"
-              class="w-full mx-auto"
-              alt="Gardener at work"
-              sizes="(min-width: 1024px) 60vw, 100vw"
-            />
-          </div>
-        </div>
-        <!-- Image 3 -->
-        <div class="flex items-center justify-center z-1 order-1 md:order-2">
-        <div class="w-7/10 mx-auto md:w-full rounded-xl overflow-hidden bg-brown">
-        
-          <motion.div
-            :initial="{ opacity: 0 }"
-            :while-in-view="{ opacity: 1 }"
-            :viewport="{ once: true, amount: 0.3 }"
-            :transition="{ duration: 0.6, ease: 'easeOut' }"
-            class="w-full"
-          >
-            <SanityImage
-              :image="leftImageTwo"
-              alt="Bed"
-              sizes="(min-width: 1024px) 30vw, 100vw"
-              class="w-full"
-            />
-          </motion.div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- CTA -->
-    <div class="flex flex-col items-center justify-center md:mt-30 p-3">
-      <div class="text-brown text-center w-full md:w-10/12 lg:w-6/12 text-mid ">
-        <SanityContent :value="bioIntro" />
-      </div>
-      <NuxtLink to="/about" class="mt-3">
+
+      <!-- Column two -->
+      <div class="order-1 md:order-2  w-full md:w-1/2 flex justify-center items-center">
+      <div class="w-1/2 mx-auto">
         <motion.div
-          class="group h-10 flex items-center rounded-full justify-center cursor-pointer relative mt-4 px-4 text-brown outline hover:outline-0 outline-[#6d340967] hover:text-off-white hover:bg-brown"
-          :while-hover="{
-            scale: 1.02,
-          }"
-          :while-tap="{ scale: 0.98 }"
-          :transition="{
-            type: 'spring',
-            stiffness: 500,
-            damping: 24,
-          }"
+          :initial="{ opacity: 0 }"
+          :while-in-view="{ opacity: 1 }"
+          :viewport="{ once: true, amount: 0.3 }"
+          :transition="{ duration: 0.6, ease: 'easeOut' }"
+          class=""
         >
-          Learn more
+          <SanityImage
+            :image="illustration"
+            alt="Tools"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            class="w-full mx-auto"
+          />
         </motion.div>
-      </NuxtLink>
+      </div>
+      </div>
     </div>
   </section>
 </template>

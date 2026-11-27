@@ -16,186 +16,115 @@ const seeds = computed(() =>
 
 const activeIndex = ref<number | null>(null);
 const xOffsets = reactive<Record<number, number>>({});
-const nudgeTimeouts: Record<number, ReturnType<typeof setTimeout>> = {};
-
-const NUDGE_RETURN_DELAY = 200; // how long the neighbor stays poked out before springing back
-
-function nudgeRight(index: number) {
-  clearTimeout(nudgeTimeouts[index]);
-  xOffsets[index] = 20;
-  nudgeTimeouts[index] = setTimeout(() => {
-    xOffsets[index] = 0;
-  }, NUDGE_RETURN_DELAY);
-}
 
 function onEnter(index: number) {
   activeIndex.value = index;
-  nudgeRight(index + 1);
 }
 function onLeave(index: number) {
   activeIndex.value = null;
-  nudgeRight(index + 1); // same nudge plays again on the way out
 }
 
 function zIndexFor(index: number) {
   return activeIndex.value === index ? 10 : 0;
 }
 function yFor(index: number) {
-  return activeIndex.value === index ? -60 : 0;
+  return activeIndex.value === index ? -10 : 0;
 }
 </script>
 
 <template>
-  <section class="flex flex-col pb-20 md:pb-40 bg-off-white relative z-1">
-    <!-- Line top -->
-    <div class="top-0 left-0 -mt-1 md:-mt-2 lg:-mt-2 xl:-mt-3 w-full absolute">
-      <RoughLine color="#F0EFD6" :flipped="false" />
-    </div>
-    <!-- Title -->
-    <h2 class="text-brown text-center text-large-2 pt-16">Gardening services</h2>
-    <div class="w-full md:w-10/12 lg:w-7/12 mx-auto text-center text-brown text-mid mt-6 md:mt-12 mb-10 md:mb-18 px-2">
-      <SanityContent :value="text" />
-    </div>
-    <!-- Packet container -->
-    <div
-      class="relative flex flex-col md:flex-row items-center justify-center px-10 md:px-20 lg:px-40 xl:px-60"
-    >
-      <NuxtLink
-        :to="`/services#${packet.title}`"
-        v-for="(packet, index) in seeds"
-        :key="index"
-        :style="{ zIndex: zIndexFor(index) }"
-        @mouseenter="onEnter(index)"
-        @mouseleave="onLeave(index)"
-        class="packet relative w-8/12 md:w-1/4 even:ms-10 odd:-ms-10 md:even:ms-0 md:odd:ms-0 -mb-40 md:mb-0 group cursor-pointer"
-      >
-        <motion.div
-          :initial="{ opacity: 0.75, y: 50 }"
-          :while-in-view="{ opacity: 1, y: 0 }"
-          :viewport="{ once: true, amount: 0.3 }"
-          :transition="{
-            type: 'spring',
-            stiffness: 300,
-            damping: 15,
-            delay: Math.min(index * 0.08, 0.6),
-          }"
+  <section class="py-14 md:py-28 bg-off-white relative z-1">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Packet container -->
+      <div class="relative grid grid-cols-3 md:grid-cols-5 gap-x-6 md:gap-x-10 gap-y-10">
+        <!-- CTA -->
+        <div class="order-last md:order-first col-span-3 md:col-span-2 h-full flex flex-col items-start justify-center gap-4">
+        <div class="text-brown text-subheading text-start">Services</div>
+          <div class="w-full text-start text-body-lg-sans text-brown">
+            <SanityContent :value="text" />
+          </div>
+
+          <UiSmallButton :to="'/services'" class="self-start" variant="brown">
+            Explore All Services
+          </UiSmallButton>
+        </div>
+        <!-- Cards  -->
+        <NuxtLink
+          :to="`/services#${packet.title}`"
+          v-for="(packet, index) in seeds"
+          :key="index"
+          :style="{ zIndex: zIndexFor(index) }"
+          @mouseenter="onEnter(index)"
+          @mouseleave="onLeave(index)"
+          class="packet  relative w-full group cursor-pointer"
         >
           <motion.div
-            :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
-            :transition="{ type: 'spring', stiffness: 300, damping: 15 }"
-            class="packet-card aspect-9/16 -mx-1 outline-brown outline rounded shadow-xl overflow-hidden relative flex flex-col items-between justify-between"
+            :initial="{ y: 30 }"
+            :while-in-view="{y: 0 }"
+            :viewport="{ once: true, amount: 1.5 }"
+            :transition="{
+              type: 'spring',
+              stiffness: 300,
+              damping: 15,
+              delay: Math.min(index * 0.08, 0.6),
+            }"
           >
-            <!-- hole -->
-            <div
-              class="absolute top-6 w-[40%] bg-off-white h-6 left-0 right-0 rounded-full border border-brown z-1 mx-auto"
-            ></div>
-
-            <SanityImage
-              v-if="packet.image"
-              :image="packet.image"
-              :alt="packet.title"
-              class="w-full absolute top-0 bottom-0 mt-auto md:m-auto left-0 md:pb-5"
-            />
-            <div class="w-full p-4 mt-8 md:mt-auto">
+            <motion.div
+              :animate="{ x: xOffsets[index] ?? 0, y: yFor(index) }"
+              :transition="{ type: 'spring', stiffness: 500, damping: 15 }"
+              class="packet-card aspect-9/16 noise -mx-1 outline-brown outline-1 md:outline-2 shadow-xl overflow-hidden relative flex flex-col items-between justify-between"
+            >
+              <!-- hole -->
               <div
-                class="flex items-center justify-center md:justify-start font-bold text-large leading-8 mb-3 tracking-tight"
-              >
-                {{ packet.title }}
-              </div>
+                class="absolute top-2 md:top-3 w-[40%] bg-white h-2.5 md:h-4.5 left-0 right-0 rounded-full border-1 md:border-2 border-brown z-1 mx-auto"
+              ></div>
 
-              <div class="w-full pt-2 border-t hidden md:block border-current text-small">
-                {{ packet.caption }}
+              <SanityImage
+                v-if="packet.image"
+                :image="packet.image"
+                :alt="packet.title"
+                class="w-full absolute top-0 bottom-0 mt-auto md:m-auto left-0 pb-2"
+              />
+              <div class="w-full flex flex-col p-1 md:p-3 mt-auto">
+                <div
+                  class="flex items-center justify-start text-body-lg-serif md:mb-2 w-full no-underline!"
+                >
+                  {{ packet.title }}
+                </div>
+
+                <div class="md:block hidden w-full border-t border-[#f0efd63d]"></div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </NuxtLink>
-    </div>
+        </NuxtLink>
 
-    <div class="mt-60 md:mt-30 flex flex-col items-center gap-4">
-      <NuxtLink to="/services">
-        <motion.div
-          class="text-brown outline outline-[#6d340937] rounded-full hover:outline-0 bg-white hover:text-off-white hover:bg-brown group h-10 flex items-center justify-center cursor-pointer relative mt-3 px-4"
-          :while-hover="{
-            scale: 1.02,
-          }"
-          :while-tap="{ scale: 0.98 }"
-          :transition="{
-            type: 'spring',
-            stiffness: 500,
-            damping: 24,
-          }"
-        >
-          Explore all services
-        </motion.div>
-      </NuxtLink>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-/* Rotation applies to the outer wrapper */
-.packet:nth-child(1) {
-  transform: rotate(-6deg);
-}
-.packet:nth-child(2) {
-  transform: rotate(-2deg);
-}
-.packet:nth-child(3) {
-  transform: rotate(2deg);
-}
-.packet:nth-child(4) {
-  transform: rotate(6deg);
-}
-
 /* Top offset applies to the inner card, not the wrapper */
 .packet:nth-child(1) .packet-card {
-  top: 3.5rem;
-  background: #6d3409;
+  top: 0.3rem;
   color: #f0efd6;
+  rotate: -1deg;
 }
 .packet:nth-child(2) .packet-card {
-  top: 1rem;
+  
+  background: #6d3409;
+  color: #f0efd6;
+  rotate: 0.5deg;
+}
+.packet:nth-child(3) .packet-card {
+  top: 0.3rem;
   background: #a5ab00;
   color: #6d3409;
 }
-.packet:nth-child(3) .packet-card {
-  top: 0;
+.packet:nth-child(4) .packet-card {
+  top: 0.1rem;
   background: #45532f;
   color: #f0efd6;
-}
-.packet:nth-child(4) .packet-card {
-  /* top: 3.5rem; */
-  background: #d1d1af;
-  color: #6d3409;
-}
-
-/* Mobile overrides */
-@media (max-width: 767px) {
-  .packet:nth-child(1) {
-    transform: rotate(-3deg);
-  }
-  .packet:nth-child(2) {
-    transform: rotate(3deg);
-  }
-  .packet:nth-child(3) {
-    transform: rotate(-3deg);
-  }
-  .packet:nth-child(4) {
-    transform: rotate(3deg);
-  }
-
-  .packet:nth-child(1)  .packet-card {
-    top: 0;
-  }
-  .packet:nth-child(2)  .packet-card {
-    top: 0;
-  }
-  .packet:nth-child(3)  .packet-card {
-    top: 0;
-  }
-  .packet:nth-child(4)  .packet-card {
-    top: 0;
-  }
+  rotate: 1deg;
 }
 </style>

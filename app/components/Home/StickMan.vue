@@ -1,11 +1,11 @@
 <template>
   <div
-    class="scene relative h-[30vw] md:h-[15vw] text-brown bg-off-white  w-full overflow-hidden"
+    class="scene relative h-[30vw] md:h-[12vw] text-brown bg-white  w-full overflow-hidden"
   >
     <!-- Before: base layer, always fully visible underneath -->
     <div class="-bottom-0.5 left-0 -mt-1 w-full absolute z-0">
       <svg
-        class="scale-x-[-1] text-green bushy"
+        class="scale-x-[-1] text-off-white bushy"
         viewBox="0 0 1634 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@
     <!-- Transition svg -->
     <div class="-bottom-0.5 left-0 -mt-1 w-full absolute z-0">
       <svg
-        class="scale-x-[-1] text-green transition-bushy"
+        class="scale-x-[-1] text-off-white transition-bushy"
         viewBox="0 0 1634 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
     <!-- After -->
     <div class="-bottom-0.5 left-0 w-full absolute z-0">
       <svg
-        class="scale-x-[-1] transition text-green flat"
+        class="scale-x-[-1] transition text-off-white flat"
         viewBox="0 0 1634 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@
         disableRemotePlayback
         controlslist="nodownload noremoteplayback nofullscreen"
         preload="auto"
-        src="~/assets/mowing_v3.mp4"
+        src="~/assets/mowing.mp4"
       ></video>
     </div>
   </div>

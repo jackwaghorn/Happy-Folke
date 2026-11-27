@@ -13,14 +13,14 @@ useSeoMeta({
 });
 </script>
 <template>
-  <NavBar />
+  <UiNavBar />
   <NuxtPage />
-  <TheFooter />
+  <UiTheFooter />
 </template>
 <style>
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.4s;
+  transition: all 150ms;
 }
 
 .page-enter-from,

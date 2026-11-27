@@ -4,16 +4,18 @@ const props = defineProps<{
   alt?: string
   sizes?: string
   widths?: number[]
+  quality?: number // new: lower for thumbnails
   loading?: 'lazy' | 'eager'
   preserveAspectRatio?: boolean // opt-out when parent controls aspect/height itself
 }>()
 
 const widths = props.widths ?? [320, 480, 640, 768, 1024, 1280, 1600, 1920]
+const quality = props.quality ?? 80
 
 const baseUrl = computed(() => props.image?.asset?.url)
 
 const urlFor = (width: number) =>
-  `${baseUrl.value}?w=${width}&auto=format&q=80`
+  `${baseUrl.value}?w=${width}&auto=format&q=${quality}`
 
 const srcset = computed(() =>
   widths.map((w) => `${urlFor(w)} ${w}w`).join(', ')
